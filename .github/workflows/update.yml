@@ -1,0 +1,72 @@
+name: 복식 서지 최신화
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'      # 매월 1일 09:00 KST (00:00 UTC)
+  workflow_dispatch:          # Actions 탭에서 손으로도 돌릴 수 있게
+  push:
+    branches: [main]
+    paths:                    # 파이프라인이 바뀌면 바로 다시 빌드
+      - 'build/**'
+      - '한국복식학회/excel/**'
+      - '.github/workflows/update.yml'
+
+permissions:
+  contents: write             # 갱신된 데이터를 다시 커밋
+  pages: write                # Pages 배포
+  id-token: write
+
+concurrency:
+  group: costume-graph
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: 의존성 설치
+        run: pip install -r requirements.txt
+
+      - name: 파이프라인 실행
+        run: bash build/update.sh
+
+      - name: 갱신분 커밋
+        run: |
+          git config user.name  'costume-graph bot'
+          git config user.email 'actions@github.com'
+          git add build/extra.json build/papers.json build/graph.json costume-graph.html
+          if git diff --cached --quiet; then
+            echo '변경 없음 — 커밋 건너뜀'
+          else
+            n=$(python3 -c "import json;print(len(json.load(open('build/papers.json',encoding='utf-8'))['papers']))")
+            git commit -m "데이터 최신화: 논문 ${n}편"
+            # GITHUB_TOKEN 으로 민 커밋은 워크플로를 다시 깨우지 않는다(깃허브 기본 동작).
+            # 위 push 트리거와 무한 루프를 이루지 않는 이유.
+            git push
+          fi
+
+      - name: 배포용 디렉터리 구성
+        run: |
+          mkdir -p site
+          cp costume-graph.html site/index.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

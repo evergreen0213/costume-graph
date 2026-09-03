@@ -36,7 +36,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'      # 3.9/3.11 에서 산출물 동일함을 확인
+          python-version: '3.11'      # 고정. 바꾸면 부동소수점 말단이 달라져 지도가 바뀐다
           cache: pip
 
       - uses: actions/setup-node@v4   # 연기 시험(build/smoke.js)용

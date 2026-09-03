@@ -4,3 +4,16 @@ __pycache__/
 build/update.log
 site/
 .claude/
+
+# render.py 가 view-*.json 에서 그때그때 만드는 것들. 저장소에 둘 이유가 없다.
+costume-graph*.data.json
+costume-graph*.version.json
+
+# 인증키 같은 것. 저장소에도, 배포되는 html 에도 절대 들어가면 안 된다.
+.secrets/
+*.key
+.env
+
+# 디자인 참고로 모아 둔 남의 이미지들. 학회 자료가 아니고 지도에도 쓰이지 않는다.
+reference/
+reference.webp

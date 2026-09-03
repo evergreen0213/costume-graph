@@ -331,6 +331,7 @@
   "학술지명": "복식",
   "언어": "한국어",
   "저자키워드": "한국복식학회, 인공지능, 대규모 언어모델, 복식, 한복, 전시",
+  "_keywords_raw": "KOSCO (한국복식학회);AI (인공지능);LLM (대규모 언어모델);costume (복식);Hanbok (한복);exhibition (전시)",
   "인용된 총 횟수": 0,
   "발행기관명": "한국복식학회",
   "발행연도": 2026,
@@ -338,8 +339,7 @@
   "호": 3,
   "시작 페이지": 1,
   "끝 페이지": 28,
-  "DOI": "10.7233/jksc.2026.76.3.001",
-  "_keywords_raw": "KOSCO (한국복식학회);AI (인공지능);LLM (대규모 언어모델);costume (복식);Hanbok (한복);exhibition (전시)"
+  "DOI": "10.7233/jksc.2026.76.3.001"
  },
  {
   "유형": "J",
@@ -349,6 +349,7 @@
   "학술지명": "복식",
   "언어": "한국어",
   "저자키워드": "학회지분석, 계량서지학적분석, 네트워크분석, 키워드공출현, 연구동향",
+  "_keywords_raw": "academic journal analysis(학회지분석);bibliometric analysis(계량서지학적분석);network analysis(네트워크분석);keyword co-occurrence(키워드공출현);research trends(연구동향)",
   "인용된 총 횟수": 0,
   "발행기관명": "한국복식학회",
   "발행연도": 2026,
@@ -356,8 +357,7 @@
   "호": 3,
   "시작 페이지": 29,
   "끝 페이지": 45,
-  "DOI": "10.7233/jksc.2026.76.3.029",
-  "_keywords_raw": "academic journal analysis(학회지분석);bibliometric analysis(계량서지학적분석);network analysis(네트워크분석);keyword co-occurrence(키워드공출현);research trends(연구동향)"
+  "DOI": "10.7233/jksc.2026.76.3.029"
  },
  {
   "유형": "J",
@@ -367,6 +367,7 @@
   "학술지명": "복식",
   "언어": "한국어",
   "저자키워드": "Korean Wave (Hallyu), young designer, entrepreneurs, K-fashion, innovative",
+  "_keywords_raw": "Korean Wave (Hallyu);young designer;entrepreneurs;K-fashion;innovative",
   "인용된 총 횟수": 0,
   "발행기관명": "한국복식학회",
   "발행연도": 2026,
@@ -374,8 +375,7 @@
   "호": 3,
   "시작 페이지": 46,
   "끝 페이지": 65,
-  "DOI": "10.7233/jksc.2026.76.3.046",
-  "_keywords_raw": "Korean Wave (Hallyu);young designer;entrepreneurs;K-fashion;innovative"
+  "DOI": "10.7233/jksc.2026.76.3.046"
  },
  {
   "유형": "J",
@@ -385,6 +385,7 @@
   "학술지명": "복식",
   "언어": "한국어",
   "저자키워드": "공출현네트워크, 디자인개발, 디지털패션, 언어네트워크분석, 연구동향, 한복",
+  "_keywords_raw": "co-occurrence network (공출현네트워크);design development (디자인개발);digital fashion (디지털패션);semantic network analysis (언어네트워크분석);research trends (연구동향);Hanbok (한복)",
   "인용된 총 횟수": 0,
   "발행기관명": "한국복식학회",
   "발행연도": 2026,
@@ -392,8 +393,7 @@
   "호": 3,
   "시작 페이지": 66,
   "끝 페이지": 87,
-  "DOI": "10.7233/jksc.2026.76.3.066",
-  "_keywords_raw": "co-occurrence network (공출현네트워크);design development (디자인개발);digital fashion (디지털패션);semantic network analysis (언어네트워크분석);research trends (연구동향);Hanbok (한복)"
+  "DOI": "10.7233/jksc.2026.76.3.066"
  },
  {
   "유형": "J",
@@ -403,6 +403,7 @@
   "학술지명": "복식",
   "언어": "한국어",
   "저자키워드": "복식 비교 분석, 문화 주권, 동아시아 복식, 고려양, 한복 디자인 DNA, K 패션 정체성",
+  "_keywords_raw": "comparative costume analysis (복식 비교 분석);cultural sovereignty (문화 주권);East Asian costume (동아시아 복식);Goryeoyang (고려양);Hanbok Design DNA (한복 디자인 DNA);K-Fashion identity (K 패션 정체성)",
   "인용된 총 횟수": 0,
   "발행기관명": "한국복식학회",
   "발행연도": 2026,
@@ -410,8 +411,7 @@
   "호": 3,
   "시작 페이지": 88,
   "끝 페이지": 107,
-  "DOI": "10.7233/jksc.2026.76.3.088",
-  "_keywords_raw": "comparative costume analysis (복식 비교 분석);cultural sovereignty (문화 주권);East Asian costume (동아시아 복식);Goryeoyang (고려양);Hanbok Design DNA (한복 디자인 DNA);K-Fashion identity (K 패션 정체성)"
+  "DOI": "10.7233/jksc.2026.76.3.088"
  },
  {
   "유형": "J",
@@ -421,6 +421,7 @@
   "학술지명": "복식",
   "언어": "한국어",
   "저자키워드": "케이팝 데몬 헌터스, 케이팝 무대의상, 한국 전통복식 요소, 케이 컬쳐",
+  "_keywords_raw": "K-pop Demon Hunters(케이팝 데몬 헌터스);K-pop stage costumes(케이팝 무대의상);Korean traditional costume elements(한국 전통복식 요소);K-culture(케이 컬쳐)",
   "인용된 총 횟수": 0,
   "발행기관명": "한국복식학회",
   "발행연도": 2026,
@@ -428,8 +429,7 @@
   "호": 3,
   "시작 페이지": 108,
   "끝 페이지": 132,
-  "DOI": "10.7233/jksc.2026.76.3.108",
-  "_keywords_raw": "K-pop Demon Hunters(케이팝 데몬 헌터스);K-pop stage costumes(케이팝 무대의상);Korean traditional costume elements(한국 전통복식 요소);K-culture(케이 컬쳐)"
+  "DOI": "10.7233/jksc.2026.76.3.108"
  },
  {
   "유형": "J",
@@ -439,6 +439,7 @@
   "학술지명": "복식",
   "언어": "한국어",
   "저자키워드": "인공 지능, 창의성, 패션 디자인, 시각적 자극",
+  "_keywords_raw": "artificial intelligence (인공 지능);creativity (창의성);fashion design (패션 디자인);visual stimuli (시각적 자극)",
   "인용된 총 횟수": 0,
   "발행기관명": "한국복식학회",
   "발행연도": 2026,
@@ -446,8 +447,7 @@
   "호": 3,
   "시작 페이지": 133,
   "끝 페이지": 157,
-  "DOI": "10.7233/jksc.2026.76.3.133",
-  "_keywords_raw": "artificial intelligence (인공 지능);creativity (창의성);fashion design (패션 디자인);visual stimuli (시각적 자극)"
+  "DOI": "10.7233/jksc.2026.76.3.133"
  },
  {
   "유형": "J",
@@ -457,6 +457,7 @@
   "학술지명": "복식",
   "언어": "한국어",
   "저자키워드": "증강현실, 가상현실, 메타분석, 경험 속성",
+  "_keywords_raw": "augmented reality(증강현실);virtual reality(가상현실);meta-analysis(메타분석);experiential attributes(경험 속성)",
   "인용된 총 횟수": 0,
   "발행기관명": "한국복식학회",
   "발행연도": 2026,
@@ -464,8 +465,7 @@
   "호": 3,
   "시작 페이지": 158,
   "끝 페이지": 173,
-  "DOI": "10.7233/jksc.2026.76.3.158",
-  "_keywords_raw": "augmented reality(증강현실);virtual reality(가상현실);meta-analysis(메타분석);experiential attributes(경험 속성)"
+  "DOI": "10.7233/jksc.2026.76.3.158"
  },
  {
   "유형": "J",
@@ -475,6 +475,7 @@
   "학술지명": "복식",
   "언어": "한국어",
   "저자키워드": "3차원 인체 모델링, 둥근어깨 자세 변화율, 보조기 압박감, 동작 용이성, 착탈 편리성, 주관적 착용 쾌적감",
+  "_keywords_raw": "3D human modeling (3차원 인체 모델링);RSP change rate (둥근어깨 자세 변화율);clothing pressure (보조기 압박감);freedom of movement (동작 용이성);donning and doffing (착탈 편리성);subjective comfort (주관적 착용 쾌적감)",
   "인용된 총 횟수": 0,
   "발행기관명": "한국복식학회",
   "발행연도": 2026,
@@ -482,8 +483,7 @@
   "호": 3,
   "시작 페이지": 174,
   "끝 페이지": 191,
-  "DOI": "10.7233/jksc.2026.76.3.174",
-  "_keywords_raw": "3D human modeling (3차원 인체 모델링);RSP change rate (둥근어깨 자세 변화율);clothing pressure (보조기 압박감);freedom of movement (동작 용이성);donning and doffing (착탈 편리성);subjective comfort (주관적 착용 쾌적감)"
+  "DOI": "10.7233/jksc.2026.76.3.174"
  },
  {
   "유형": "J",
@@ -493,6 +493,7 @@
   "학술지명": "복식",
   "언어": "한국어",
   "저자키워드": "감성 정치, 공감 정치, 패션과 정치, 패션 커뮤니케이션, 정치 커뮤니케이션, 뉴욕타임스",
+  "_keywords_raw": "affective politics (감성 정치);empathic politics (공감 정치);fashion and politics (패션과 정치);fashion communication (패션 커뮤니케이션);political communication (정치 커뮤니케이션);The New York Times (뉴욕타임스)",
   "인용된 총 횟수": 0,
   "발행기관명": "한국복식학회",
   "발행연도": 2026,
@@ -500,8 +501,7 @@
   "호": 3,
   "시작 페이지": 192,
   "끝 페이지": 210,
-  "DOI": "10.7233/jksc.2026.76.3.192",
-  "_keywords_raw": "affective politics (감성 정치);empathic politics (공감 정치);fashion and politics (패션과 정치);fashion communication (패션 커뮤니케이션);political communication (정치 커뮤니케이션);The New York Times (뉴욕타임스)"
+  "DOI": "10.7233/jksc.2026.76.3.192"
  },
  {
   "유형": "J",
@@ -511,6 +511,7 @@
   "학술지명": "복식",
   "언어": "한국어",
   "저자키워드": "능동적 이용, 외모 스트레스, 미용·성형 의도, 수동적 이용, 자기 이미지 불일치, 소셜미디어 이용유형",
+  "_keywords_raw": "active use (능동적 이용);appearance stress (외모 스트레스);cosmetic/plastic surgery intention (미용/성형 의도);passive use (수동적 이용);self-image discrepancy (자기 이미지 불일치);social media use type (소셜미디어 이용유형)",
   "인용된 총 횟수": 0,
   "발행기관명": "한국복식학회",
   "발행연도": 2026,
@@ -518,8 +519,7 @@
   "호": 3,
   "시작 페이지": 211,
   "끝 페이지": 229,
-  "DOI": "10.7233/jksc.2026.76.3.211",
-  "_keywords_raw": "active use (능동적 이용);appearance stress (외모 스트레스);cosmetic/plastic surgery intention (미용/성형 의도);passive use (수동적 이용);self-image discrepancy (자기 이미지 불일치);social media use type (소셜미디어 이용유형)"
+  "DOI": "10.7233/jksc.2026.76.3.211"
  },
  {
   "유형": "J",
@@ -529,6 +529,7 @@
   "학술지명": "복식",
   "언어": "한국어",
   "저자키워드": "가방디자인, 문화상품, 백제 전돌, 산수문전, 아트뮤지엄, 온라인샵",
+  "_keywords_raw": "bag design(가방디자인);cultural product(문화상품);Baekje Jeondol(백제 전돌);Sansumunjeon(산수문전);art museum(아트뮤지엄);online shop(온라인샵)",
   "인용된 총 횟수": 0,
   "발행기관명": "한국복식학회",
   "발행연도": 2026,
@@ -536,7 +537,6 @@
   "호": 3,
   "시작 페이지": 230,
   "끝 페이지": 250,
-  "DOI": "10.7233/jksc.2026.76.3.230",
-  "_keywords_raw": "bag design(가방디자인);cultural product(문화상품);Baekje Jeondol(백제 전돌);Sansumunjeon(산수문전);art museum(아트뮤지엄);online shop(온라인샵)"
+  "DOI": "10.7233/jksc.2026.76.3.230"
  }
 ]

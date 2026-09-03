@@ -56,12 +56,28 @@ def clean_title(t):
     t = re.sub(r'<한문>', '□', str(t))
     return re.sub(r'\s+', ' ', t).strip()
 
+
+# 원자료에 사람이 아닌 표시가 저자 자리에 들어온 것이 있다. 한자를 못 읽어
+# '<한문>' 으로 적어 둔 칸이 그렇다. 사람 수를 셀 때 한 명으로 잡히면 안 된다.
+NOT_A_NAME = {'nan', 'none', '', '<한문>', '□', '-', '.'}
+
+
+def clean_author(a):
+    a = re.sub(r'\s+', ' ', str(a)).strip()
+    if a.lower() in NOT_A_NAME:
+        return None
+    # 낱자모가 음절 사이에 끼어 든 오타 — '김경ㅇ화' 처럼. 온전한 음절이 있을 때만 턴다.
+    if re.search(r'[가-힣]', a):
+        a = re.sub(r'[ㄱ-ㅎㅏ-ㅣ]', '', a).strip()
+    return a or None
+
 def main():
     df = load()
     papers, kw_raw = [], []
     for i, r in df.iterrows():
         kws = clean_kw_cell(r.get('저자키워드'))
-        authors = [a.strip() for a in str(r['저자명']).split(';') if a.strip() and a.strip() != 'nan']
+        authors = [c for c in (clean_author(a) for a in str(r['저자명']).split(';')) if c]
+        authors = list(dict.fromkeys(authors))      # 한 논문에 같은 이름이 두 번 적힌 칸이 있다
         papers.append({
             'id': f'p{i}',
             'title': clean_title(r['논문명']),

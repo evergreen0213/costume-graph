@@ -1,134 +1,229 @@
-<title>복식 연구 지도</title>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- charset 은 문서 맨 앞 1024바이트 안에 있어야 브라우저가 읽는다.
+     이게 없으면 서버가 Content-Type 에 charset 을 안 붙였을 때 한글이 통째로 깨진다.
+     학회 서버 설정을 우리가 정할 수 없으므로 파일 스스로 밝혀 둔다. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="5" fill="%23EDE6D8"/><g fill="none" stroke="%231F1A16" stroke-width="1.6"><rect x="4.5" y="4.5" width="23" height="23" rx="3"/><path d="M4.5 13.5h23M13.5 4.5v23"/></g><rect x="16.5" y="16.5" width="10" height="10" rx="1.6" fill="%23D81818" opacity=".85"/></svg>">
+<title>복식 연구 지도 — 한국복식학회 창립 50주년 기념</title>
+<meta name="description" content="한국복식학회 창립 50주년 기념. 학술지 《복식》에 실린 논문 2,108편의 키워드를 조각보로 이어 붙인 연구 지도.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="복식 연구 지도 — 한국복식학회 창립 50주년 기념">
+<meta property="og:description" content="학술지 《복식》에 실린 논문의 키워드를 조각보로 이어 붙인 연구 지도.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* 한지(밝음) / 먹(어두움) — 바탕은 두 상태 모두 명시적으로 칠한다 */
+/* 한지(밝음) / 먹(어두움). 두 상태 모두 바탕을 명시적으로 칠한다. */
 :root{
   --ground:#EDE6D8; --ground-2:#E3DAC7; --panel:#F6F1E7; --edge:#C7BCA4;
-  --ink:#1F1A16; --ink-2:#59504A; --ink-3:#8A7F70;
-  --n-paper:#2F4FA8;   /* 논문 — 남 */
-  --n-kw:#AE3A73;      /* 키워드 — 자주 */
-  --n-author:#3F7A22;  /* 연구자 — 녹 */
-  --brand:#D81818;     /* 학회 진홍 — 데이터가 아닌 화면 요소 전용 */
-  --hot:#1F1A16;       /* 선택 — 먹. 범주 3색과 색상이 겹치지 않는다 */
-  --link:rgba(31,26,22,.15);
-  --link-hot:rgba(31,26,22,.42);
-  --field:rgba(31,26,22,.11);
+  --ink:#1F1A16; --ink-2:#4A423B; --ink-3:#6E655A;
+  --brand:#D81818;                     /* 학회 진홍 — 선택·강조 전용, 데이터 색 아님 */
+  --seam:rgba(31,26,22,.32);
+  /* 오방색과 그 간색 — 조각보 한 조각씩 */
+  --p0:#2F4FA8; --p1:#B2352B; --p2:#35785A; --p3:#9C7315; --p4:#6B4A93;
+  --p5:#1F7180; --p6:#B04A75; --p7:#6E6524; --p8:#4A4038; --p9:#B2551E;
+  --link:rgba(31,26,22,.16); --link-hot:rgba(216,24,24,.45);
+  --field:rgba(31,26,22,.13);
   --shadow:0 1px 2px rgba(31,26,22,.10),0 10px 30px rgba(31,26,22,.11);
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     --ground:#141110; --ground-2:#1D1917; --panel:#1F1B18; --edge:#362E27;
-    --ink:#EFE7D8; --ink-2:#A79C8B; --ink-3:#6F6558;
-    --n-paper:#6B85DE; --n-kw:#CE6296; --n-author:#5FA33C;
-    --brand:#E8564E; --hot:#EFE7D8;
-    --link:rgba(239,231,216,.13); --link-hot:rgba(239,231,216,.40);
-    --field:rgba(239,231,216,.10);
+    --ink:#EFE7D8; --ink-2:#BCB2A0; --ink-3:#8A8071;
+    --brand:#F0574B;
+    --seam:rgba(239,231,216,.28);
+    --p0:#6B85DE; --p1:#E2685A; --p2:#4FA97D; --p3:#D0A33C; --p4:#A084D4;
+    --p5:#45A8BC; --p6:#E080A8; --p7:#A89B45; --p8:#A79C8B; --p9:#E08A45;
+    --link:rgba(239,231,216,.14); --link-hot:rgba(240,87,75,.5);
+    --field:rgba(239,231,216,.12);
     --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 34px rgba(0,0,0,.45);
   }
 }
 :root[data-theme="dark"]{
   --ground:#141110; --ground-2:#1D1917; --panel:#1F1B18; --edge:#362E27;
-  --ink:#EFE7D8; --ink-2:#A79C8B; --ink-3:#6F6558;
-  --n-paper:#6B85DE; --n-kw:#CE6296; --n-author:#5FA33C;
-  --brand:#E8564E; --hot:#EFE7D8;
-  --link:rgba(239,231,216,.13); --link-hot:rgba(239,231,216,.40);
-  --field:rgba(239,231,216,.10);
+  --ink:#EFE7D8; --ink-2:#BCB2A0; --ink-3:#8A8071;
+  --brand:#F0574B;
+  --seam:rgba(239,231,216,.28);
+  --p0:#6B85DE; --p1:#E2685A; --p2:#4FA97D; --p3:#D0A33C; --p4:#A084D4;
+  --p5:#45A8BC; --p6:#E080A8; --p7:#A89B45; --p8:#A79C8B; --p9:#E08A45;
+  --link:rgba(239,231,216,.14); --link-hot:rgba(240,87,75,.5);
+  --field:rgba(239,231,216,.12);
   --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 34px rgba(0,0,0,.45);
 }
 
 *{box-sizing:border-box}
-body{
-  margin:0; background:var(--ground); color:var(--ink);
+body{margin:0; background:var(--ground); color:var(--ink);
   font-family:"IBM Plex Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  font-weight:300; -webkit-font-smoothing:antialiased; overflow:hidden;
-}
+  font-weight:300; -webkit-font-smoothing:antialiased; overflow:hidden}
 canvas{display:block; position:fixed; inset:0; width:100%; height:100%; cursor:grab}
-canvas.grabbing{cursor:grabbing}
-canvas.pointing{cursor:pointer}
-:focus-visible{outline:2px solid var(--hot); outline-offset:2px}
+canvas.grabbing{cursor:grabbing} canvas.pointing{cursor:pointer}
+:focus-visible{outline:2px solid var(--brand); outline-offset:2px}
 
-.rail{
-  position:fixed; top:0; left:0; bottom:0; width:300px; z-index:5;
-  display:flex; flex-direction:column; gap:19px; padding:22px 22px 18px;
-  background:linear-gradient(90deg,var(--ground) 76%,transparent);
-  overflow-y:auto; overscroll-behavior:contain;
-}
-.masthead h1{font-family:"Gowun Batang",serif; font-weight:700; font-size:26px; margin:0 0 7px; letter-spacing:-.015em; line-height:1.25}
-.masthead p{margin:0; font-size:12px; line-height:1.7; color:var(--ink-2)}
-.rule{height:1px; background:var(--edge); margin:14px 0 12px}
-.tally{display:flex; gap:15px; font-family:"IBM Plex Mono",monospace}
+.rail{position:fixed; top:0; left:0; bottom:0; width:340px; z-index:5; font-weight:400;
+  display:flex; flex-direction:column; gap:19px; padding:24px 22px 20px;
+  background:linear-gradient(90deg,var(--ground) 0%,var(--ground) 90%,transparent 100%);
+  overflow-y:auto; overscroll-behavior:contain}
+.masthead h1{font-family:"Gowun Batang",serif; font-weight:700; font-size:29px; margin:0 0 7px; letter-spacing:-.015em}
+/* 기념 문구 — 대문이 닫혀도 무엇을 기려 지은 지도인지는 남아 있어야 한다 */
+.occasion{display:flex; align-items:center; gap:8px; margin:0 0 11px;
+  font-size:12px; letter-spacing:.04em; color:var(--brand)}
+.occasion::before{content:''; width:13px; height:1px; background:var(--brand); opacity:.55; flex:none}
+.occasion span{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em;
+  color:var(--ink-3); font-variant-numeric:tabular-nums}
+/* 학술지 이름 — 겹낫표는 좌우 여백을 품고 있어 그냥 두면 뜬다. 줄바꿈도 막는다. */
+.jn{white-space:nowrap; margin-left:-.2em; margin-right:-.34em}
+.masthead p{margin:0; font-size:13.5px; line-height:1.75; color:var(--ink-2); text-wrap:pretty}
+.rule{height:1px; background:var(--edge); margin:13px 0 12px}
+.tally{display:grid; grid-template-columns:1fr 1fr; gap:14px 16px; font-family:"IBM Plex Mono",monospace}
 .tally div{display:flex; flex-direction:column; gap:2px}
-.tally b{font-size:17px; font-weight:500; letter-spacing:-.02em; font-variant-numeric:tabular-nums}
-.tally span{font-size:9.5px; letter-spacing:.09em; color:var(--ink-3); font-family:"IBM Plex Sans KR",sans-serif}
+.tally b{font-size:20px; font-weight:500; letter-spacing:-.02em; font-variant-numeric:tabular-nums}
+.tally span{font-size:11px; letter-spacing:.06em; color:var(--ink-2); font-family:"IBM Plex Sans KR",sans-serif}
 
-.field-label{font-size:10px; letter-spacing:.14em; color:var(--ink-3); margin-bottom:8px}
-input[type=search]{
-  width:100%; padding:9px 11px; font:inherit; font-size:13px; font-weight:400;
-  color:var(--ink); background:var(--panel); border:1px solid var(--edge); border-radius:3px;
-}
-input[type=search]::placeholder{color:var(--ink-3); font-weight:300}
+.lbl{font-size:12px; letter-spacing:.1em; color:var(--ink-2); font-weight:500; margin-bottom:9px}
+input[type=search]{width:100%; padding:12px 13px; font:inherit; font-size:15px; font-weight:400;
+  color:var(--ink); background:var(--panel); border:1.5px solid var(--edge); border-radius:3px}
+input[type=search]::placeholder{color:var(--ink-3); font-weight:400}
 
-.legend{display:flex; flex-direction:column; gap:1px}
-.legend button{display:flex; align-items:center; gap:10px; width:100%; padding:6px 8px; font:inherit; font-size:12.5px; color:var(--ink); text-align:left; background:none; border:0; border-radius:3px; cursor:pointer}
-.legend button:hover{background:var(--ground-2)}
-.legend button[aria-pressed=false]{color:var(--ink-3)}
-.legend button[aria-pressed=false] .dot{opacity:.22}
-.dot{width:9px; height:9px; border-radius:50%; flex:none}
-.legend .num{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-3); font-variant-numeric:tabular-nums}
+.sizekey{display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--ink-2); line-height:1.5}
+.sizekey i{display:inline-block; border-radius:50%; background:var(--ink-3)}
+.sw{width:11px; height:11px; border-radius:2px; flex:none}
 
 .fields{display:flex; flex-direction:column; gap:1px}
-.fields button{
-  display:flex; align-items:baseline; gap:8px; width:100%; padding:6px 8px;
-  font:inherit; font-size:12.5px; color:var(--ink); text-align:left;
-  background:none; border:0; border-left:2px solid transparent; border-radius:0 3px 3px 0; cursor:pointer;
-}
+.fields button{display:flex; align-items:center; gap:9px; width:100%; padding:8px 9px;
+  font:inherit; font-size:14px; color:var(--ink); text-align:left; background:none; border:0;
+  border-left:3px solid transparent; border-radius:0 3px 3px 0; cursor:pointer}
 .fields button:hover{background:var(--ground-2)}
-.fields button[aria-pressed=true]{background:var(--ground-2); border-left-color:var(--hot); font-weight:500}
-.fields .num{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-3); font-variant-numeric:tabular-nums}
+.fields button[aria-pressed=true]{background:var(--ground-2); border-left-color:var(--brand); font-weight:500}
+.fields .num{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:12.5px; color:var(--ink-2); font-variant-numeric:tabular-nums}
 
-.years{display:flex; flex-direction:column; gap:8px}
-.years .row{display:flex; justify-content:space-between; font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--ink-2); font-variant-numeric:tabular-nums}
-input[type=range]{width:100%; margin:0; accent-color:var(--hot)}
+.years{display:flex; flex-direction:column; gap:9px}
+.yhead{display:flex; align-items:center; justify-content:space-between; gap:8px; min-height:22px}
+.yspan{font-family:"IBM Plex Mono",monospace; font-size:15px; color:var(--ink); font-variant-numeric:tabular-nums}
+.ymini{font:inherit; font-size:12px; color:var(--ink-2); background:none; border:1px solid var(--edge);
+  border-radius:3px; padding:3px 8px; cursor:pointer; white-space:nowrap}
+.ymini:hover{color:var(--ink); border-color:var(--ink-3)}
 
-.foot{margin-top:auto; display:flex; flex-direction:column; gap:9px; padding-top:6px}
-.foot p{margin:0; font-size:10.5px; line-height:1.65; color:var(--ink-3)}
-.btns{display:flex; gap:6px}
-.mini{font:inherit; font-size:11px; color:var(--ink-2); background:none; border:1px solid var(--edge); border-radius:3px; padding:5px 10px; cursor:pointer}
+/* 해마다 몇 편이 실렸는지 — 눈금이 아니라 자료 자체를 보고 기간을 고르게 한다 */
+.ybars{display:flex; align-items:flex-end; gap:1px; height:38px; margin-bottom:-3px; padding:0 9.5px}
+.ybars i{flex:1; min-width:0; background:var(--edge); border-radius:1px 1px 0 0; transition:background .12s}
+.ybars i.on{background:var(--brand); opacity:.5}
+
+.yslider{position:relative; height:24px; touch-action:none; cursor:pointer; --r:9.5px}
+.ytrack{position:absolute; left:var(--r); right:var(--r); top:11px; height:3px; border-radius:2px; background:var(--edge)}
+.ysel{position:absolute; top:11px; height:3px; border-radius:2px; background:var(--brand)}
+.yknob{position:absolute; top:3px; width:19px; height:19px; margin-left:calc(0px - var(--r)); border-radius:50%;
+  background:var(--panel); border:2.5px solid var(--brand); cursor:grab;
+  box-shadow:0 1px 3px rgba(0,0,0,.22)}
+.yknob:active{cursor:grabbing}
+.yknob::after{content:attr(data-y); position:absolute; left:50%; top:20px; transform:translateX(-50%);
+  font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--ink-2);
+  font-variant-numeric:tabular-nums; opacity:0; transition:opacity .12s; pointer-events:none}
+.yslider:hover .yknob::after,.yknob:focus-visible::after,.yknob.drag::after{opacity:1}
+
+.ypre{display:flex; flex-wrap:wrap; gap:4px; margin-top:9px}
+.ypre button{font:inherit; font-size:12px; font-family:"IBM Plex Mono",monospace; color:var(--ink-2);
+  background:none; border:1px solid var(--edge); border-radius:3px; padding:3px 7px; cursor:pointer}
+.ypre button:hover{color:var(--ink); border-color:var(--ink-3)}
+.ypre button[aria-pressed=true]{color:var(--brand); border-color:var(--brand)}
+.ynote{margin:0; font-size:12px; color:var(--ink-2); font-variant-numeric:tabular-nums}
+
+.foot{margin-top:auto; display:flex; flex-direction:column; gap:15px; padding-top:10px}
+/* 안내 글 — 조작법과 자료의 성격은 성질이 다르다. 묶어서 제목을 달아 준다 */
+.note .lbl{margin-bottom:7px}
+.note .lbl+ul{margin:0 0 15px}
+.note ul:last-child{margin-bottom:0}
+.note ul{list-style:none; padding:0; display:flex; flex-direction:column; gap:7px}
+.note li{position:relative; padding-left:13px; margin:0;
+  font-size:12.5px; line-height:1.72; color:var(--ink-2); text-wrap:pretty}
+.note li::before{content:'—'; position:absolute; left:0; top:0; color:var(--edge)}
+.note li b{font-weight:500; color:var(--ink)}
+.note li:empty{display:none}
+.stamp{margin:0; font-size:11.5px; letter-spacing:.04em; color:var(--ink-3);
+  font-family:"IBM Plex Mono",monospace}
+.btns{display:flex; gap:6px; flex-wrap:wrap}
+.mini{font:inherit; font-size:13px; color:var(--ink); background:none; border:1.5px solid var(--edge);
+  border-radius:3px; padding:8px 13px; cursor:pointer}
 .mini:hover{color:var(--ink); border-color:var(--ink-3)}
 
-.card{
-  position:fixed; top:18px; right:18px; bottom:18px; width:356px; z-index:6;
-  display:flex; flex-direction:column; background:var(--panel);
-  border:1px solid var(--edge); border-radius:4px; box-shadow:var(--shadow);
-  transform:translateX(calc(100% + 28px)); transition:transform .32s cubic-bezier(.22,1,.36,1);
-}
+.card{position:fixed; top:16px; right:16px; bottom:16px; width:472px; z-index:6; font-weight:400;
+  display:flex; flex-direction:column; background:var(--panel); border:1px solid var(--edge);
+  border-radius:4px; box-shadow:var(--shadow);
+  transform:translateX(calc(100% + 28px)); transition:transform .32s cubic-bezier(.22,1,.36,1)}
 .card.open{transform:none}
-.card header{display:flex; align-items:center; gap:10px; padding:14px 15px; border-bottom:1px solid var(--edge)}
-.card .kind{font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.14em; padding:4px 7px; border-radius:2px; white-space:nowrap; color:#fff; background:var(--n-paper)}
-.card .kind[data-t="1"]{background:var(--n-kw)} .card .kind[data-t="2"]{background:var(--n-author)}
-.card .x{margin-left:auto; background:none; border:0; color:var(--ink-3); font-size:20px; line-height:1; cursor:pointer; padding:0 3px}
-.card .x:hover{color:var(--ink)}
-.card .body{padding:16px 15px; overflow-y:auto; overscroll-behavior:contain}
-.card h2{font-family:"Gowun Batang",serif; font-size:19px; font-weight:700; line-height:1.5; margin:0 0 13px}
-dl{display:grid; grid-template-columns:58px 1fr; gap:7px 12px; margin:0 0 15px; font-size:12.5px; line-height:1.55}
-dt{color:var(--ink-3); font-size:10.5px; letter-spacing:.05em; padding-top:2px}
-dd{margin:0; font-weight:400}
+.card header{display:flex; align-items:center; gap:11px; padding:16px 20px; border-bottom:1px solid var(--edge)}
+.kind{font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.12em; padding:6px 10px;
+  border-radius:2px; white-space:nowrap; color:var(--panel); background:var(--ink-2)}
+.back{font:inherit; font-size:13.5px; color:var(--ink-2); background:none; border:1px solid var(--edge);
+  border-radius:3px; padding:6px 12px; cursor:pointer}
+.back:hover{color:var(--ink)}
+.card .x{margin-left:auto; background:none; border:0; color:var(--ink-2); font-size:27px; line-height:1; cursor:pointer; padding:0 3px}
+.card .x:hover{color:var(--brand)}
+.card .body{padding:20px; overflow-y:auto; overscroll-behavior:contain}
+.card h2{font-family:"Gowun Batang",serif; font-size:26px; font-weight:700; line-height:1.55; margin:0 0 17px; color:var(--ink)}
+dl{display:grid; grid-template-columns:72px 1fr; gap:12px 16px; margin:0 0 20px; font-size:16px; line-height:1.65}
+dt{color:var(--ink-2); font-size:13.5px; letter-spacing:.02em; padding-top:3px}
+dd{margin:0; font-weight:400; color:var(--ink)}
 dd.mono{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums}
 .chips{display:flex; flex-wrap:wrap; gap:5px}
-.chip{font:inherit; font-size:11.5px; font-weight:400; color:var(--ink-2); cursor:pointer; background:var(--ground-2); border:1px solid transparent; border-radius:2px; padding:4px 8px}
+.chip{display:inline-flex; align-items:center; gap:7px; font:inherit; font-size:14px; font-weight:400; color:var(--ink); cursor:pointer;
+  background:var(--ground-2); border:1px solid transparent; border-radius:3px; padding:8px 12px}
 .chip:hover{color:var(--ink); border-color:var(--edge)}
-.sub{font-size:10px; letter-spacing:.13em; color:var(--ink-3); margin:0 0 9px}
+.chip[data-dead]{cursor:default; color:var(--ink-3)}
+.cnt{color:var(--ink-2); font-family:"IBM Plex Mono",monospace; font-size:12.5px}
+.sub{font-size:13px; letter-spacing:.08em; color:var(--ink-2); margin:0 0 11px; font-weight:500}
 .list{display:flex; flex-direction:column; gap:1px}
-.list button{display:block; width:100%; text-align:left; font:inherit; font-size:12.5px; line-height:1.5; color:var(--ink); background:none; border:0; border-left:2px solid transparent; padding:7px 9px; cursor:pointer; border-radius:0 3px 3px 0}
-.list button:hover{background:var(--ground-2); border-left-color:var(--hot)}
-.list .yr{font-family:"IBM Plex Mono",monospace; font-size:10.5px; color:var(--ink-3); margin-right:7px; font-variant-numeric:tabular-nums}
+.list button{display:block; width:100%; text-align:left; font:inherit; font-size:15.5px; line-height:1.62;
+  color:var(--ink); background:none; border:0; border-left:3px solid transparent; padding:11px 13px;
+  cursor:pointer; border-radius:0 3px 3px 0}
+.list button:hover{background:var(--ground-2); border-left-color:var(--brand)}
+.list .yr{font-family:"IBM Plex Mono",monospace; font-size:13.5px; color:var(--ink-2); margin-right:10px; font-variant-numeric:tabular-nums}
+.empty{font-size:14.5px; color:var(--ink-2); line-height:1.75}
 
-.tip{position:fixed; z-index:7; pointer-events:none; max-width:300px; padding:6px 9px; font-size:12px; line-height:1.45; color:var(--ink); background:var(--panel); border:1px solid var(--edge); border-radius:3px; box-shadow:var(--shadow); opacity:0; transition:opacity .12s}
+/* 첫 안내 — 들어오자마자 뭘 해야 할지 모르는 사람을 위한 것.
+   시간이 지나서가 아니라 '실제로 굴렸을 때' 사라진다. */
+.hintbox{
+  position:fixed; left:50%; bottom:15%; z-index:12;
+  display:none; flex-direction:column; align-items:center; gap:13px;
+  padding:24px 38px 22px; text-align:center; pointer-events:none;
+  background:var(--panel); border:2px solid var(--brand); border-radius:6px;
+  box-shadow:var(--shadow); transform:translateX(-50%);
+}
+.hintbox.on{display:flex; animation:hintIn .45s ease both}
+@keyframes hintIn{ from{opacity:0; transform:translate(-50%,14px)} to{opacity:1; transform:translate(-50%,0)} }
+.hintbox .wheel{width:30px; height:46px; flex:none}
+.hintbox .wheel rect{fill:none; stroke:var(--ink-2); stroke-width:2}
+.hintbox .wheel circle{fill:var(--brand); animation:scrollNudge 1.9s ease-in-out infinite}
+@keyframes scrollNudge{
+  0%,100%{transform:translateY(0); opacity:1}
+  50%{transform:translateY(8px); opacity:.35}
+}
+.hintbox b{font-family:"Gowun Batang",serif; font-size:21px; font-weight:700; color:var(--ink); letter-spacing:-.01em}
+.hintbox span{font-size:13.5px; color:var(--ink-2); line-height:1.6}
+@media (max-width:880px){ .hintbox{bottom:auto; top:40%; padding:18px 24px 16px} .hintbox b{font-size:17px} }
+@media (prefers-reduced-motion:reduce){ .hintbox .wheel circle{animation:none} .hintbox.on{animation:none} }
+
+/* 누구의 자취를 보고 있는지 알려주는 띠 */
+.tracebar{
+  position:fixed; top:18px; left:50%; transform:translate(-50%,-14px); z-index:8;
+  display:flex; align-items:baseline; gap:10px; padding:8px 15px;
+  background:var(--panel); border:1px solid var(--brand); border-radius:3px;
+  box-shadow:var(--shadow); opacity:0; pointer-events:none;
+  transition:opacity .22s, transform .22s;
+}
+.tracebar.on{opacity:1; transform:translate(-50%,0)}
+.tracebar b{font-family:"Gowun Batang",serif; font-size:15px; font-weight:700; color:var(--brand)}
+.tracebar span{font-size:11.5px; color:var(--ink-2); font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums}
+@media (max-width:880px){ .tracebar{top:auto; bottom:12px; font-size:12px} }
+
+.tip{position:fixed; z-index:7; pointer-events:none; max-width:290px; padding:6px 9px; font-size:12px;
+  line-height:1.45; color:var(--ink); background:var(--panel); border:1px solid var(--edge);
+  border-radius:3px; box-shadow:var(--shadow); opacity:0; transition:opacity .12s}
 .tip.on{opacity:1}
-
-
 /* ── 한옥 대문 인트로 ── */
 .gate{
   position:fixed; inset:0; z-index:20; background:var(--ground);
@@ -185,12 +280,14 @@ dd.mono{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums
 }
 
 @media (max-width:880px){
-  .rail{width:100%; height:auto; bottom:auto; background:linear-gradient(180deg,var(--ground) 82%,transparent); padding-bottom:26px; gap:13px}
-  .masthead p,.years,.foot,.fields{display:none}
+  .rail{width:100%; height:auto; bottom:auto; background:linear-gradient(180deg,var(--ground) 82%,transparent); padding-bottom:24px; gap:12px}
+  .masthead p,.years,.foot,.fields,.legendbox{display:none}
   .card{top:auto; left:12px; right:12px; bottom:12px; width:auto; height:58%; transform:translateY(calc(100% + 22px))}
 }
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
 </style>
+</head>
+<body>
 
 <div class="gate" id="gate">
   <div class="gate-inner">
@@ -203,7 +300,7 @@ dd.mono{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums
       </div>
     </div>
     <h1>복식 연구 지도</h1>
-    <p class="sub">한국복식학회 50주년 기념 · 학술지 <i>복식</i> 논문 지도</p>
+    <p class="sub">한국복식학회 창립 50주년 기념 · 학술지 <span class="jn">《복식》</span> 논문 지도</p>
     <p class="yrs">1976 &mdash; 2026</p>
     <button class="enter" id="enter">입 장</button>
     <p class="hint" id="gateStat"></p>
@@ -215,350 +312,532 @@ dd.mono{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums
 <div class="rail">
   <div class="masthead">
     <h1>복식 연구 지도</h1>
-    <p>한국복식학회가 학술지 <i>복식</i>에 실은 논문을 키워드와 연구자로 이어 그린 지도입니다. 점 하나가 논문 한 편, 가까이 모인 덩어리가 하나의 연구 갈래입니다.</p>
+    <div class="occasion">한국복식학회 창립 50주년 기념 <span>1976—2026</span></div>
+    <p>여러 자락이 모여 한 장이 되는 조각보처럼, 학술지 <span class="jn">《복식》</span>의 논문 키워드를 이어 붙였습니다. 조각 하나가 연구 갈래 하나, 점 하나가 키워드 하나입니다.</p>
     <div class="rule"></div>
     <div class="tally">
       <div><b id="t-p">0</b><span>논문</span></div>
       <div><b id="t-k">0</b><span>키워드</span></div>
       <div><b id="t-a">0</b><span>연구자</span></div>
-      <div><b id="t-y">—</b><span>발행연도</span></div>
+      <div><b id="t-y">—</b><span>수록 기간</span></div>
     </div>
   </div>
 
   <div>
-    <label class="field-label" for="q">검색</label>
-    <input type="search" id="q" placeholder="한복, 조선시대, 김영인…" autocomplete="off" spellcheck="false">
+    <label class="lbl" for="q">검색</label>
+    <input type="search" id="q" placeholder="한복 · 조선시대 · 이유리" autocomplete="off" spellcheck="false">
   </div>
 
   <div>
-    <div class="field-label">점의 종류</div>
-    <div class="legend">
-      <button id="f0" aria-pressed="true"><i class="dot" style="background:var(--n-paper)"></i>논문<span class="num" id="c0"></span></button>
-      <button id="f1" aria-pressed="true"><i class="dot" style="background:var(--n-kw)"></i>키워드<span class="num" id="c1"></span></button>
-      <button id="f2" aria-pressed="true"><i class="dot" style="background:var(--n-author)"></i>연구자<span class="num" id="c2"></span></button>
-    </div>
-  </div>
-
-  <div>
-    <div class="field-label">연구 갈래 — 지도 위 자리</div>
+    <div class="lbl">연구 갈래 — 조각 하나가 한 갈래</div>
     <div class="fields" id="fieldList"></div>
+    <div class="sizekey" style="margin-top:11px">
+      <i style="width:5px;height:5px"></i><i style="width:9px;height:9px"></i><i style="width:14px;height:14px"></i>
+      <span>점의 크기 — 그 키워드를 쓴 논문 수</span>
+    </div>
   </div>
 
   <div class="years">
-    <div class="field-label" style="margin:0">발행연도</div>
-    <div class="row"><span id="y-lo"></span><span id="y-hi"></span></div>
-    <input type="range" id="ya" aria-label="시작 연도">
-    <input type="range" id="yb" aria-label="끝 연도">
+    <div class="lbl" style="margin:0">발행연도</div>
+    <div class="yhead">
+      <span class="yspan" id="y-span"></span>
+      <button class="ymini" id="y-all" hidden>전체 기간</button>
+    </div>
+    <div class="ybars" id="ybars" aria-hidden="true"></div>
+    <div class="yslider" id="yslider">
+      <div class="ytrack"></div>
+      <div class="ysel" id="ysel"></div>
+      <div class="yknob" id="yk0" role="slider" tabindex="0" aria-label="시작 연도"></div>
+      <div class="yknob" id="yk1" role="slider" tabindex="0" aria-label="끝 연도"></div>
+    </div>
+    <div class="ypre" id="ypre"></div>
+    <p class="ynote" id="y-note"></p>
   </div>
 
   <div class="foot">
-    <p>끌어서 이동 · 휠로 확대 · 점을 눌러 서지사항</p>
+    <div class="note">
+      <div class="lbl">보는 법</div>
+      <ul>
+        <li><b>끌어서</b> 옮기고, <b>휠로</b> 확대하거나 줄입니다.</li>
+        <li><b>점을 누르면</b> 그 키워드를 쓴 논문이 열립니다.</li>
+        <li><b>연구자나 논문을 고르면</b> 그가 지도에 남긴 자취가 이어집니다.</li>
+      </ul>
+      <div class="lbl">읽는 법</div>
+      <ul>
+        <li>세 편 이상에 쓰인 키워드만 지도에 올렸습니다. 나머지는 <b>검색</b>으로 찾습니다.</li>
+        <li id="frameNote"></li>
+      </ul>
+    </div>
     <div class="btns">
       <button class="mini" id="fit">전체 보기</button>
       <button class="mini" id="theme">바탕 바꾸기</button>
     </div>
+    <p class="stamp" id="stamp"></p>
   </div>
 </div>
 
 <aside class="card" id="card" aria-live="polite">
-  <header><span class="kind" id="k-kind">논문</span><button class="x" id="k-x" aria-label="닫기">&times;</button></header>
+  <header>
+    <span class="kind" id="k-kind">키워드</span>
+    <button class="back" id="k-back" hidden>← 뒤로</button>
+    <button class="x" id="k-x" aria-label="닫기">&times;</button>
+  </header>
   <div class="body" id="k-body"></div>
 </aside>
 
+<div class="hintbox" id="hintBox" role="status">
+  <svg class="wheel" viewBox="0 0 26 40" aria-hidden="true">
+    <rect x="1" y="1" width="24" height="38" rx="12"></rect>
+    <circle cx="13" cy="12" r="3.2"></circle>
+  </svg>
+  <b id="hintMain">스크롤로 확대 · 축소</b>
+  <span>끌어서 이동 · 점을 눌러 논문 보기</span>
+</div>
+
+<div class="tracebar" id="traceBar" aria-live="polite"></div>
 <div class="tip" id="tip"></div>
 
+
 <script>
-const DATA = /*__DATA__*/;
-const N=DATA.nodes, L=DATA.links, META=DATA.meta, NP=DATA.nPapers;
-const COMM=DATA.comm, FIELDS=DATA.fields, NF=DATA.nFields;
-const n=N.length, NG=NF+1;
+/* 이 파일은 자료를 품은 채로 혼자 돌아간다. 그러면서도 새 판이 올라와 있으면
+   자료만 받아 바꿔 그린다 — 담당자가 파일을 다시 올릴 필요가 없게 하려는 것.
+   자세한 사정은 DEPLOY.md '자기 갱신' 항목에. */
+const BAKED = /*__DATA__*/;
+const UPDATE_FROM = '/*__PAGES_URL__*/';   // 비어 있으면 자기 갱신을 하지 않는다
+
+let bootCtl = null;                        // 앞 판이 걸어 둔 것들을 떼기 위한 손잡이
+
+function boot(D, fresh){
+  /* 두 번째로 불릴 수 있다 — 새 자료를 받아 왔을 때. 그래서 앞 판이 남긴 것을 먼저 치운다.
+     듣개는 signal 로 한꺼번에 떼고, 목록은 비우고, 옛 그리기 고리는 스스로 멎게 한다.
+     이 경로는 fetch 가 있는 브라우저에서만 도는데, 그런 브라우저면 signal 도 있다. */
+  if(bootCtl) bootCtl.abort();
+  bootCtl = (typeof AbortController==='function') ? new AbortController() : null;
+  const SIG = bootCtl ? {signal: bootCtl.signal} : undefined;
+  const alive = () => !bootCtl || !bootCtl.signal.aborted;
+  for(const id of ['fieldList','ybars','ypre']){       // 두 번 쌓이지 않게
+    const el = document.getElementById(id); if(el) el.textContent='';
+  }
+const KW=D.kw, KL=D.kl, CELLS=D.cells, SEAMS=D.seams, FIELDS=D.fields,
+      LAND=D.land, DECOR=D.decor, GLYPHS=D.glyphs,
+      KP=D.kp, PAPERS=D.papers, PA=D.pa, PK=D.pk, AUTHORS=D.authors;
+const n=KW.length, NG=FIELDS.length;
 const cv=document.getElementById('cv'), ctx=cv.getContext('2d');
 
-const X=new Float32Array(n), Y=new Float32Array(n), VX=new Float32Array(n), VY=new Float32Array(n);
-const R=new Float32Array(n), T=new Uint8Array(n), W=new Float32Array(n);
-const show=new Uint8Array(n).fill(1), fixed=new Uint8Array(n);
-const adj=Array.from({length:n},()=>[]);
+/* 사파리 16(2022) 이전에는 캔버스에 roundRect 가 없다. 갈래 이름표를 그리는
+   자리라 그리기 함수 한가운데서 터졌고, 지도가 반쯤 그려지다 멈췄다.
+   학회 홈페이지를 보는 쪽에 낡은 맥이 섞여 있어 손으로 그려 채운다. */
+if(typeof CanvasRenderingContext2D!=='undefined' && !CanvasRenderingContext2D.prototype.roundRect){
+  CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h,r){
+    const lim=Math.min(Math.abs(w),Math.abs(h))/2;
+    let rr=typeof r==='number'?r:(Array.isArray(r)&&r.length?+r[0]:0);
+    rr=Math.max(0,Math.min(rr||0,lim));
+    this.moveTo(x+rr,y);
+    this.arcTo(x+w,y,     x+w,y+h, rr);
+    this.arcTo(x+w,y+h,   x,  y+h, rr);
+    this.arcTo(x,  y+h,   x,  y,   rr);
+    this.arcTo(x,  y,     x+w,y,   rr);
+    this.closePath();
+    return this;
+  };
+}
+const card=document.getElementById('card'), kBody=document.getElementById('k-body'),
+      kKind=document.getElementById('k-kind'), kBack=document.getElementById('k-back'),
+      tip=document.getElementById('tip'),
+      hintBox=document.getElementById('hintBox'), hintMain=document.getElementById('hintMain');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-/* 갈래마다 지도 위 자리를 준다 — 색이 아니라 위치가 갈래를 나타낸다.
-   자리는 cluster.py 가 갈래끼리의 연결 세기로 미리 계산해 둔 값이다. */
-const AX=new Float32Array(NG), AY=new Float32Array(NG);
-for(let g=0;g<NG;g++){ AX[g]=DATA.anchors[g][0]; AY[g]=DATA.anchors[g][1]; }
+const NAME=KW.map(k=>k[0]), NPAP=KW.map(k=>k[1]), YR=KW.map(k=>k[2]),
+      CM=KW.map(k=>k[3]), X=KW.map(k=>k[4]), Y=KW.map(k=>k[5]);
+const R=NPAP.map(v=>3.4+Math.sqrt(v)*2.1);
+const show=new Uint8Array(n).fill(1);
+const adj=Array.from({length:n},()=>[]), nbW=new Map();
+for(const [a,b,w] of KL){ adj[a].push(b); adj[b].push(a); nbW.set(a+'_'+b,w); nbW.set(b+'_'+a,w); }
 
-for(let i=0;i<n;i++){
-  const d=N[i]; T[i]=d[0]; W[i]=d[3];
-  R[i] = d[0]===0 ? 1.9+Math.min(Math.sqrt(d[3])*0.62,3.4)
-       : d[0]===1 ? 2.6+Math.sqrt(d[3])*1.15
-       :            2.4+Math.sqrt(d[3])*0.95;
-  const g=COMM[i], a=i*2.399963, rr=40+((i*37)%160);
-  X[i]=AX[g]+Math.cos(a)*rr; Y[i]=AY[g]+Math.sin(a)*rr;
-}
-for(const [s,t] of L){ adj[s].push(t); adj[t].push(s); }
-
-/* ── 힘 시뮬레이션 (Barnes–Hut 쿼드트리) ── */
-const THETA2=0.81, REPEL=-14, LINK_D=30, LINK_K=1.2, DECAY=0.86, GRAV=0.02, CLUST=0.10, MAXD=20;
-let alpha=1, cooling=true;
-const CELLS=8*n;
-const qx=new Float32Array(CELLS), qy=new Float32Array(CELLS), qm=new Float32Array(CELLS);
-const qc=new Int32Array(CELLS*4), qhead=new Int32Array(CELLS), leaf=new Uint8Array(CELLS);
-const nextPt=new Int32Array(n);
-let qCount=0, rootS=0;
-
-function newCell(){
-  if(qCount>=CELLS) return CELLS-1;
-  const i=qCount++;
-  qc[i*4]=qc[i*4+1]=qc[i*4+2]=qc[i*4+3]=-1;
-  qhead[i]=-1; leaf[i]=1; qm[i]=0;
-  return i;
-}
-function child(cell,quad){
-  let c=qc[cell*4+quad];
-  if(c===-1){ c=newCell(); qc[cell*4+quad]=c; }
-  return c;
-}
-function insert(p){
-  let cell=0, cx=0, cy=0, size=rootS, depth=0;
-  for(;;){
-    if(!leaf[cell]){
-      const h=size/2, quad=(Y[p]>cy?2:0)+(X[p]>cx?1:0);
-      cx+=(quad&1)? h/2:-h/2; cy+=(quad&2)? h/2:-h/2;
-      size=h; depth++; cell=child(cell,quad); continue;
-    }
-    if(qhead[cell]===-1 || depth>=MAXD){ nextPt[p]=qhead[cell]; qhead[cell]=p; return; }
-    leaf[cell]=0;                                   // 잎을 가지로 올리고 기존 점을 내린다
-    let q=qhead[cell]; qhead[cell]=-1;
-    while(q!==-1){
-      const nx=nextPt[q], quad=(Y[q]>cy?2:0)+(X[q]>cx?1:0), c=child(cell,quad);
-      nextPt[q]=qhead[c]; qhead[c]=q; q=nx;
-    }
-  }
-}
-function summarize(cell,cx,cy,size){                // 깊이가 MAXD로 묶여 재귀가 안전하다
-  if(leaf[cell]){
-    let m=0,sx=0,sy=0;
-    for(let p=qhead[cell]; p!==-1; p=nextPt[p]){ m++; sx+=X[p]; sy+=Y[p]; }
-    qm[cell]=m; if(m){ qx[cell]=sx/m; qy[cell]=sy/m; }
-    return;
-  }
-  let m=0,sx=0,sy=0; const h=size/2;
-  for(let k2=0;k2<4;k2++){
-    const c=qc[cell*4+k2]; if(c===-1) continue;
-    summarize(c, cx+((k2&1)?h/2:-h/2), cy+((k2&2)?h/2:-h/2), h);
-    m+=qm[c]; sx+=qx[c]*qm[c]; sy+=qy[c]*qm[c];
-  }
-  qm[cell]=m; if(m){ qx[cell]=sx/m; qy[cell]=sy/m; }
-}
-const stC=new Int32Array(4*MAXD+8), stS=new Float32Array(4*MAXD+8);
-function repel(i){
-  let sp=0; stC[0]=0; stS[0]=rootS; sp=1;
-  while(sp>0){
-    sp--; const cell=stC[sp], size=stS[sp];
-    if(qm[cell]===0) continue;
-    if(leaf[cell]){
-      for(let p=qhead[cell]; p!==-1; p=nextPt[p]){
-        if(p===i) continue;
-        let dx=X[p]-X[i], dy=Y[p]-Y[i], d2=dx*dx+dy*dy;
-        if(d2<1){ dx=(i-p)%2?0.7:-0.7; dy=0.7; d2=1; }
-        const f=REPEL*alpha/d2; VX[i]+=dx*f; VY[i]+=dy*f;
-      }
-      continue;
-    }
-    let dx=qx[cell]-X[i], dy=qy[cell]-Y[i], d2=dx*dx+dy*dy;
-    if(d2<1) d2=1;
-    if((size*size)/d2 < THETA2){
-      const f=REPEL*qm[cell]*alpha/d2; VX[i]+=dx*f; VY[i]+=dy*f; continue;
-    }
-    if(sp+4>=stC.length) continue;
-    for(let k2=0;k2<4;k2++){ const c=qc[cell*4+k2]; if(c!==-1){ stC[sp]=c; stS[sp]=size/2; sp++; } }
-  }
-}
-function tick(){
-  let ex=1;
-  for(let i=0;i<n;i++){ const a=Math.abs(X[i]), b=Math.abs(Y[i]); if(a>ex)ex=a; if(b>ex)ex=b; }
-  rootS=ex*2+80; qCount=0; newCell();
-  for(let i=0;i<n;i++) insert(i);
-  summarize(0,0,0,rootS);
-  for(let i=0;i<n;i++) repel(i);
-
-  for(let li=0; li<L.length; li++){
-    const s=L[li][0], t=L[li][1];
-    const dx=X[t]-X[s], dy=Y[t]-Y[s];
-    const d=Math.sqrt(dx*dx+dy*dy)||1;
-    const f=(d-LINK_D)/d*alpha*LINK_K;
-    const ws=1/(1+adj[s].length), wt=1/(1+adj[t].length), tot=ws+wt;
-    VX[s]+=dx*f*(wt/tot)*2; VY[s]+=dy*f*(wt/tot)*2;
-    VX[t]-=dx*f*(ws/tot)*2; VY[t]-=dy*f*(ws/tot)*2;
-  }
+/* 갈래마다 조각 하나 — 같은 갈래의 보로노이 칸을 한 덩어리로 묶는다 */
+const PATCH=[], BB=[];
+for(let g=0;g<NG;g++){
+  const path=new Path2D();
+  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
   for(let i=0;i<n;i++){
-    const g=COMM[i];
-    VX[i]+=(AX[g]-X[i])*CLUST*alpha;                // 제 갈래 자리로 끌어당긴다
-    VY[i]+=(AY[g]-Y[i])*CLUST*alpha;
-    VX[i]-=X[i]*GRAV*alpha; VY[i]-=Y[i]*GRAV*alpha;
-    if(fixed[i]){ VX[i]=VY[i]=0; continue; }
-    VX[i]*=DECAY; VY[i]*=DECAY;
-    const s2=VX[i]*VX[i]+VY[i]*VY[i];
-    if(s2>900){ const sc=30/Math.sqrt(s2); VX[i]*=sc; VY[i]*=sc; }
-    X[i]+=VX[i]; Y[i]+=VY[i];
+    if(CM[i]!==g) continue;
+    const c=CELLS[i]; if(!c.length) continue;
+    path.moveTo(c[0][0],c[0][1]);
+    for(let j=1;j<c.length;j++) path.lineTo(c[j][0],c[j][1]);
+    path.closePath();
+    for(const [px,py] of c){ if(px<x0)x0=px; if(px>x1)x1=px; if(py<y0)y0=py; if(py>y1)y1=py; }
   }
-  if(cooling) alpha*=0.981;
-  if(alpha<0.008){ alpha=0.008; cooling=false; }
+  PATCH.push(path); BB.push([x0,y0,x1,y1]);
+}
+
+/* 보자기 — 천 자락과 시접(홈질) */
+const LANDPATH=new Path2D();
+LANDPATH.moveTo(LAND[0][0],LAND[0][1]);
+for(let i=1;i<LAND.length;i++) LANDPATH.lineTo(LAND[i][0],LAND[i][1]);
+LANDPATH.closePath();
+/* 장식은 디자인마다 다르다. 데이터로 받아 그대로 그린다. */
+function drawDecor(){
+  const pick=c=>({ink:COL.ink,ink2:COL.ink2,ink3:COL.ink3,brand:COL.brand,
+                  panel:COL.panel,ground:COL.ground,edge:COL.edge}[c]||c);
+  for(const o of DECOR){
+    const w=o.w==null?1.5:o.w;
+    ctx.globalAlpha=o.a==null?1:o.a;
+    ctx.lineWidth=Math.min(w/k,w*1.7);
+    ctx.setLineDash(o.dash?o.dash.map(v=>Math.min(v/k,v*1.7)):[]);
+    ctx.lineCap=o.cap||'butt';
+    ctx.beginPath();
+    if(o.t==='circle') ctx.arc(o.c[0],o.c[1],o.r,0,6.2832);
+    else{
+      ctx.moveTo(o.pts[0][0],o.pts[0][1]);
+      for(let i=1;i<o.pts.length;i++) ctx.lineTo(o.pts[i][0],o.pts[i][1]);
+      if(o.close) ctx.closePath();
+    }
+    if(o.fill){ ctx.fillStyle=pick(o.fill); ctx.fill(); }
+    if(o.stroke){ ctx.strokeStyle=pick(o.stroke); ctx.stroke(); }
+  }
+  ctx.setLineDash([]); ctx.lineCap='butt'; ctx.globalAlpha=1;
+}
+
+/* 복식 도상 — 갈래마다 하나씩, 0~100 좌표계로 그려 둔 것을 옮겨 그린다 */
+function drawGlyph(cmds,cx,cy,size){
+  const k2=size/100, ox=cx-size/2, oy=cy-size/2;
+  const X_=x=>ox+x*k2, Y_=y=>oy+y*k2;
+  ctx.beginPath();
+  let open=false;
+  for(const c of cmds){
+    const op=c[0];
+    if(op==='M'){ ctx.moveTo(X_(c[1]),Y_(c[2])); open=true; }
+    else if(op==='L'){ ctx.lineTo(X_(c[1]),Y_(c[2])); }
+    else if(op==='Q'){ ctx.quadraticCurveTo(X_(c[1]),Y_(c[2]),X_(c[3]),Y_(c[4])); }
+    else if(op==='A'){
+      const ccw=c.length>6&&c[6];
+      if(!open){ ctx.moveTo(X_(c[1]+Math.cos(c[4])*c[3]),Y_(c[2]+Math.sin(c[4])*c[3])); open=true; }
+      ctx.arc(X_(c[1]),Y_(c[2]),c[3]*k2,c[4],c[5],!!ccw);
+    }
+    else if(op==='Z'){ ctx.closePath(); }
+  }
+  ctx.stroke();
+}
+
+/* ── 색: 오방색과 그 간색 ── */
+const CSS=getComputedStyle(document.documentElement);
+let COL={}, HUE=[];
+function readTheme(){
+  const g=v=>CSS.getPropertyValue(v).trim();
+  HUE=[]; for(let i=0;i<10;i++) HUE.push(g('--p'+i));
+  COL={ground:g('--ground'),ink:g('--ink'),ink2:g('--ink-2'),ink3:g('--ink-3'),
+       brand:g('--brand'),panel:g('--panel'),edge:g('--edge'),seam:g('--seam')};
+  DARK = document.documentElement.dataset.theme
+    ? document.documentElement.dataset.theme==='dark'
+    : matchMedia('(prefers-color-scheme:dark)').matches;
+}
+let DARK=false;
+readTheme();
+const hueOf=g=>HUE[g%10];
+function tint(hex,a){
+  const h=hex.replace('#',''); 
+  const r=parseInt(h.slice(0,2),16), gg=parseInt(h.slice(2,4),16), b=parseInt(h.slice(4,6),16);
+  return `rgba(${r},${gg},${b},${a})`;
+}
+
+/* ── 전통 문양: 갈래마다 다른 바탕 무늬 ── */
+function motif(g,x0,y0,x1,y1,step){
+  const t=g%10;
+  ctx.beginPath();
+  if(t===0){                                    // 격자 — 정자살
+    for(let x=Math.ceil(x0/step)*step;x<x1;x+=step){ ctx.moveTo(x,y0); ctx.lineTo(x,y1); }
+    for(let y=Math.ceil(y0/step)*step;y<y1;y+=step){ ctx.moveTo(x0,y); ctx.lineTo(x1,y); }
+  } else if(t===1){                             // 빗금 — 사선살
+    for(let x=Math.ceil((x0-(y1-y0))/step)*step;x<x1;x+=step){ ctx.moveTo(x,y0); ctx.lineTo(x+(y1-y0),y1); }
+  } else if(t===2){                             // 물결 — 청해파
+    for(let y=Math.ceil(y0/step)*step;y<y1;y+=step){
+      ctx.moveTo(x0,y);
+      for(let x=x0;x<x1;x+=step) ctx.quadraticCurveTo(x+step/4,y-step/3,x+step/2,y),
+                                 ctx.quadraticCurveTo(x+step*0.75,y+step/3,x+step,y);
+    }
+  } else if(t===3){                             // 점 — 물방울
+    for(let y=Math.ceil(y0/step)*step;y<y1;y+=step)
+      for(let x=Math.ceil(x0/step)*step;x<x1;x+=step){
+        const ox=((Math.round(y/step)%2)?step/2:0);
+        ctx.moveTo(x+ox+step*0.13,y); ctx.arc(x+ox,y,step*0.13,0,6.2832);
+      }
+  } else if(t===4){                             // 마름모 — 능화
+    for(let y=Math.ceil(y0/step)*step;y<y1;y+=step)
+      for(let x=Math.ceil(x0/step)*step;x<x1;x+=step){
+        ctx.moveTo(x,y-step*0.34); ctx.lineTo(x+step*0.34,y);
+        ctx.lineTo(x,y+step*0.34); ctx.lineTo(x-step*0.34,y); ctx.closePath();
+      }
+  } else if(t===5){                             // 어긋난 빗금
+    for(let x=Math.ceil(x0/step)*step;x<x1+ (y1-y0);x+=step){ ctx.moveTo(x,y0); ctx.lineTo(x-(y1-y0),y1); }
+  } else if(t===6){                             // 원 — 보상화
+    for(let y=Math.ceil(y0/step)*step;y<y1;y+=step)
+      for(let x=Math.ceil(x0/step)*step;x<x1;x+=step){
+        ctx.moveTo(x+step*0.32,y); ctx.arc(x,y,step*0.32,0,6.2832);
+      }
+  } else if(t===7){                             // 십자 — 완자 조각
+    for(let y=Math.ceil(y0/step)*step;y<y1;y+=step)
+      for(let x=Math.ceil(x0/step)*step;x<x1;x+=step){
+        ctx.moveTo(x-step*0.26,y); ctx.lineTo(x+step*0.26,y);
+        ctx.moveTo(x,y-step*0.26); ctx.lineTo(x,y+step*0.26);
+      }
+  } else if(t===8){                             // 삼각 — 색동
+    for(let y=Math.ceil(y0/step)*step;y<y1;y+=step)
+      for(let x=Math.ceil(x0/step)*step;x<x1;x+=step){
+        ctx.moveTo(x-step*0.3,y+step*0.24); ctx.lineTo(x,y-step*0.28);
+        ctx.lineTo(x+step*0.3,y+step*0.24); ctx.closePath();
+      }
+  } else {                                      // 가로 겹줄 — 띠살
+    for(let y=Math.ceil(y0/step)*step;y<y1;y+=step){
+      ctx.moveTo(x0,y); ctx.lineTo(x1,y);
+      ctx.moveTo(x0,y+step*0.16); ctx.lineTo(x1,y+step*0.16);
+    }
+  }
+  ctx.stroke();
 }
 
 /* ── 화면 ── */
-let k=1, tx=0, ty=0, dpr=1, w=0, h=0, fitted=false;
+let k=1, tx=0, ty=0, dpr=1, w=0, h=0;
 function resize(){
   dpr=Math.min(devicePixelRatio||1,2);
   w=cv.clientWidth; h=cv.clientHeight;
   cv.width=Math.round(w*dpr); cv.height=Math.round(h*dpr);
 }
-addEventListener('resize',resize); resize();
-k=0.5; tx=w/2; ty=h/2;
-
-const CSS=getComputedStyle(document.documentElement);
-let COL={};
-function readTheme(){
-  const g=v=>CSS.getPropertyValue(v).trim();
-  COL={ground:g('--ground'),paper:g('--n-paper'),kw:g('--n-kw'),au:g('--n-author'),
-       hot:g('--hot'),link:g('--link'),linkHot:g('--link-hot'),field:g('--field'),
-       ink:g('--ink'),ink2:g('--ink-2')};
-}
-readTheme();
-const baseCol=i=>T[i]===0?COL.paper:T[i]===1?COL.kw:COL.au;
-
 function fit(){
-  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9,any=false;
-  for(let i=0;i<n;i++){ if(!show[i]) continue; any=true;
-    if(X[i]<x0)x0=X[i]; if(X[i]>x1)x1=X[i]; if(Y[i]<y0)y0=Y[i]; if(Y[i]>y1)y1=Y[i]; }
-  if(!any) return;
-  const padL=w>880?320:20, padR=w>880?30:20, padY=w>880?40:150;
-  const kk=Math.min((w-padL-padR)/(x1-x0+120),(h-padY*2)/(y1-y0+120));
-  k=Math.max(0.08,Math.min(kk,3));
-  tx=padL+(w-padL-padR)/2-((x0+x1)/2)*k; ty=h/2-((y0+y1)/2)*k;
+  const wide=w>880;
+  const padL=wide?366:18, padR=wide?(card.classList.contains('open')?512:44):18, padY=wide?44:132;
+  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+  for(const [px,py] of LAND){ if(px<x0)x0=px; if(px>x1)x1=px; if(py<y0)y0=py; if(py>y1)y1=py; }
+  for(const o of DECOR){                                   // 고름 같은 바깥 장식까지
+    const ps = o.t==='circle' ? [[o.c[0]-o.r,o.c[1]-o.r],[o.c[0]+o.r,o.c[1]+o.r]] : o.pts;
+    for(const [px,py] of ps){ if(px<x0)x0=px; if(px>x1)x1=px; if(py<y0)y0=py; if(py>y1)y1=py; }
+  }
+  const m=150;
+  k=Math.min((w-padL-padR)/(x1-x0+m*2),(h-padY*2)/(y1-y0+m*2));
+  tx=padL+(w-padL-padR)/2-((x0+x1)/2)*k;
+  ty=h/2-((y0+y1)/2)*k;
 }
+resize();
+addEventListener('resize',()=>{ resize(); fit(); }, SIG);
 
-let hover=-1, sel=-1, focusSet=null, querySet=null, fieldSel=-1;
-const vis=i=>show[i];
-function dimSet(){ return focusSet || querySet || (fieldSel>=0?null:null); }
+const traceBar=document.getElementById('traceBar');
+let hover=-1, sel=-1, focusSet=null, querySet=null, fieldSel=-1, dirty=true;
+/* trace: 연구자·논문 하나가 지도 위에 남긴 자취.
+   set 은 그가 쓴 키워드, links 는 같은 논문 안에서 함께 쓰인 짝. */
+let trace=null;
+const mark=()=>{ dirty=true; };
+
+function buildTrace(pis,label,sub){
+  const set=new Set(), links=[], seen=new Set();
+  for(const pi of pis){
+    const ks=PK[pi];
+    for(const k of ks) set.add(k);
+    for(let a=0;a<ks.length;a++) for(let b=a+1;b<ks.length;b++){
+      const lo=Math.min(ks[a],ks[b]), hi=Math.max(ks[a],ks[b]), key=lo+'_'+hi;
+      if(seen.has(key)) continue;
+      seen.add(key); links.push([lo,hi]);
+    }
+  }
+  return set.size ? {set,links,label,sub} : null;
+}
+function setTrace(t){
+  trace=t; sel=-1; focusSet=null;
+  if(t){ traceBar.innerHTML=`<b>${esc(t.label)}</b><span>${esc(t.sub)}</span>`; traceBar.classList.add('on'); }
+  else traceBar.classList.remove('on');
+  mark();
+}
+function fitTo(set){
+  if(!set||!set.size) return;
+  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+  for(const i of set){ if(X[i]<x0)x0=X[i]; if(X[i]>x1)x1=X[i]; if(Y[i]<y0)y0=Y[i]; if(Y[i]>y1)y1=Y[i]; }
+  const wide=w>880;
+  const padL=wide?366:18, padR=wide?(card.classList.contains('open')?512:44):18, padY=wide?70:150;
+  const m=260;
+  k=Math.max(0.06,Math.min(2.4,Math.min((w-padL-padR)/(x1-x0+m*2),(h-padY*2)/(y1-y0+m*2))));
+  tx=padL+(w-padL-padR)/2-((x0+x1)/2)*k;
+  ty=h/2-((y0+y1)/2)*k;
+  mark();
+}
 
 function draw(){
   ctx.setTransform(dpr,0,0,dpr,0,0);
   ctx.fillStyle=COL.ground; ctx.fillRect(0,0,w,h);
   ctx.setTransform(k*dpr,0,0,k*dpr,tx*dpr,ty*dpr);
-  const pad=40/k, x0=(-tx)/k-pad, x1=(w-tx)/k+pad, y0=(-ty)/k-pad, y1=(h-ty)/k+pad;
-  const onScreen=i=>X[i]>=x0&&X[i]<=x1&&Y[i]>=y0&&Y[i]<=y1;
-
+  const pad=60/k, vx0=(-tx)/k-pad, vx1=(w-tx)/k+pad, vy0=(-ty)/k-pad, vy1=(h-ty)/k+pad;
   const dsel=focusSet||querySet;
-  const bright=i=>{
-    if(fieldSel>=0 && COMM[i]!==fieldSel) return false;
-    if(dsel) return dsel.has(i);
-    return true;
-  };
-  const dim = !!dsel || fieldSel>=0;
+  const dim=!!dsel||fieldSel>=0||!!trace;
+  const brightF=g=>fieldSel<0||g===fieldSel;
+  const bright=i=>brightF(CM[i])&&(trace?trace.set.has(i):(dsel?dsel.has(i):true));
 
-  /* 갈래 이름 — 지도의 지역 이름처럼 노드 아래에 크게 */
-  if(k<2.4){
-    ctx.textAlign='center'; ctx.textBaseline='middle';
-    for(let g=0;g<NF;g++){
-      let sx=0,sy=0,c=0;
-      for(let i=0;i<n;i++) if(COMM[i]===g&&show[i]&&T[i]===0){ sx+=X[i]; sy+=Y[i]; c++; }
-      if(c<8) continue;
-      const fs=Math.min(46/k,120);
-      ctx.font=`700 ${fs}px "Gowun Batang",serif`;
-      ctx.fillStyle=COL.field;
-      ctx.globalAlpha = fieldSel>=0 ? (g===fieldSel?1:.25) : 1;
-      ctx.fillText(FIELDS[g].name, sx/c, sy/c);
-    }
-    ctx.globalAlpha=1;
+  /* 0. 뭍 — 조각이 닿지 않는 자리까지 한지빛으로 채운다 */
+  ctx.fillStyle=COL.panel; ctx.globalAlpha=DARK?.30:.55;
+  ctx.fill(LANDPATH); ctx.globalAlpha=1;
+
+  /* 1. 조각 — 갈래마다 한 덩어리로 칠하고 문양을 넣는다 */
+  for(let g=0;g<NG;g++){
+    const on=brightF(g);
+    ctx.fillStyle=tint(hueOf(g), DARK?(on?.17:.05):(on?.15:.04));
+    ctx.fill(PATCH[g],'nonzero');
+    const [bx0,by0,bx1,by1]=BB[g];
+    const mx0=Math.max(bx0,vx0), my0=Math.max(by0,vy0), mx1=Math.min(bx1,vx1), my1=Math.min(by1,vy1);
+    if(mx1<=mx0||my1<=my0) continue;
+    ctx.save(); ctx.clip(PATCH[g],'nonzero');
+    ctx.strokeStyle=tint(hueOf(g), DARK?(on?.20:.06):(on?.17:.05));
+    ctx.lineWidth=Math.min(1.1/k,2.2);
+    motif(g,mx0,my0,mx1,my1,58);
+    ctx.restore();
   }
 
-  ctx.lineWidth=Math.min(1.1/k,1.6);
-  ctx.strokeStyle=COL.link; ctx.beginPath();
-  for(const [s,t] of L){
-    if(!vis(s)||!vis(t)) continue;
-    if(dsel&&(dsel.has(s)||dsel.has(t))) continue;
-    ctx.moveTo(X[s],Y[s]); ctx.lineTo(X[t],Y[t]);
+  /* 1-b. 갈래마다 복식 도상 하나 — 바탕에 은은하게 */
+  for(let g=0;g<NG;g++){
+    const f=FIELDS[g], cmds=GLYPHS[f.glyph];
+    if(!cmds||!f.gat) continue;
+    const on=brightF(g);
+    ctx.save(); ctx.clip(PATCH[g],'nonzero');
+    ctx.strokeStyle=hueOf(g);
+    ctx.globalAlpha=on?(DARK?.30:.26):.07;
+    ctx.lineWidth=Math.max(1.6,Math.min(2.6/k,4));
+    ctx.lineJoin='round'; ctx.lineCap='round';
+    drawGlyph(cmds,f.gat[0],f.gat[1],Math.min(330,Math.max(150,f.kws*3.4)));
+    ctx.restore(); ctx.globalAlpha=1;
+  }
+
+  /* 2. 바느질선 — 갈래가 맞닿는 자리 */
+  ctx.save();
+  ctx.strokeStyle=COL.seam; ctx.lineWidth=Math.min(1.5/k,2.6);
+  ctx.setLineDash([Math.min(7/k,12),Math.min(5/k,9)]); ctx.lineCap='round';
+  ctx.beginPath();
+  for(const [a,b,c,d] of SEAMS){ ctx.moveTo(a,b); ctx.lineTo(c,d); }
+  ctx.stroke(); ctx.restore();
+
+  /* 2-b. 틀과 장식 */
+  ctx.setLineDash([]);
+  ctx.strokeStyle=COL.ink; ctx.globalAlpha=DARK?.5:.62;
+  ctx.lineWidth=Math.min(2.6/k,4.2);
+  ctx.stroke(LANDPATH);
+  ctx.globalAlpha=1;
+  drawDecor();
+
+  /* 3. 이음선 */
+  ctx.lineWidth=Math.min(0.9/k,1.3);
+  ctx.strokeStyle=tint(DARK?'#EFE7D8':'#1F1A16',DARK?.13:.14);
+  ctx.beginPath();
+  for(const [a,b] of KL){
+    if(!show[a]||!show[b]) continue;
+    if(dsel&&(dsel.has(a)||dsel.has(b))) continue;
+    ctx.moveTo(X[a],Y[a]); ctx.lineTo(X[b],Y[b]);
   }
   ctx.globalAlpha=dim?.3:1; ctx.stroke(); ctx.globalAlpha=1;
-
   if(dsel){
-    ctx.strokeStyle=COL.linkHot; ctx.lineWidth=Math.min(1.5/k,2.2); ctx.beginPath();
-    for(const [s,t] of L){
-      if(!vis(s)||!vis(t)) continue;
-      if(dsel.has(s)||dsel.has(t)){ ctx.moveTo(X[s],Y[s]); ctx.lineTo(X[t],Y[t]); }
+    ctx.strokeStyle=COL.brand; ctx.lineWidth=Math.min(1.5/k,2.3); ctx.globalAlpha=.55;
+    ctx.beginPath();
+    for(const [a,b] of KL){
+      if(!show[a]||!show[b]) continue;
+      if(dsel.has(a)||dsel.has(b)){ ctx.moveTo(X[a],Y[a]); ctx.lineTo(X[b],Y[b]); }
     }
-    ctx.stroke();
+    ctx.stroke(); ctx.globalAlpha=1;
   }
 
+  /* 3-b. 자취 — 이 사람(혹은 이 논문)이 지도에 남긴 선 */
+  if(trace&&trace.links.length){
+    ctx.strokeStyle=COL.brand; ctx.globalAlpha=.5;
+    ctx.lineWidth=Math.min(1.9/k,2.8); ctx.setLineDash([]);
+    ctx.beginPath();
+    for(const [a,b] of trace.links){
+      if(!show[a]||!show[b]) continue;
+      ctx.moveTo(X[a],Y[a]); ctx.lineTo(X[b],Y[b]);
+    }
+    ctx.stroke(); ctx.globalAlpha=1;
+  }
+
+  /* 4. 점 */
   for(let i=0;i<n;i++){
-    if(!vis(i)||!onScreen(i)) continue;
+    if(!show[i]||X[i]<vx0||X[i]>vx1||Y[i]<vy0||Y[i]>vy1) continue;
     const on=!dim||bright(i);
-    ctx.globalAlpha=on?1:.14;
-    const isSel=i===sel||i===hover;
-    ctx.fillStyle=isSel?COL.hot:baseCol(i);
-    ctx.beginPath(); ctx.arc(X[i],Y[i],R[i]*(i===sel?1.7:1),0,6.2832); ctx.fill();
+    ctx.globalAlpha=on?1:.12;
+    const isS=i===sel||i===hover;
+    ctx.fillStyle=isS?COL.brand:hueOf(CM[i]);
+    ctx.beginPath(); ctx.arc(X[i],Y[i],R[i]*(i===sel?1.45:1),0,6.2832); ctx.fill();
+    ctx.strokeStyle=COL.ground; ctx.lineWidth=Math.min(1.4/k,2); ctx.stroke();   // 겹칠 때 떨어져 보이게
+    if(trace&&trace.set.has(i)){
+      ctx.strokeStyle=COL.brand; ctx.lineWidth=Math.min(1.8/k,2.6);
+      ctx.beginPath(); ctx.arc(X[i],Y[i],R[i]+5/k,0,6.2832); ctx.stroke();
+    }
     if(i===sel){
-      ctx.globalAlpha=.85; ctx.strokeStyle=COL.hot; ctx.lineWidth=1.4/k;
-      ctx.beginPath(); ctx.arc(X[i],Y[i],R[i]*1.7+6/k,0,6.2832); ctx.stroke();
+      ctx.globalAlpha=.9; ctx.strokeStyle=COL.brand; ctx.lineWidth=1.6/k;
+      ctx.beginPath(); ctx.arc(X[i],Y[i],R[i]*1.45+8/k,0,6.2832); ctx.stroke();
     }
   }
   ctx.globalAlpha=1;
 
-  const thr = k>2.6?0 : k>1.5?3 : k>0.85?6 : 12;
+  /* 5. 키워드 이름 */
+  const thr = k>1.5?0 : k>0.9?3 : k>0.55?5 : k>0.3?8 : 13;
   ctx.textAlign='center'; ctx.textBaseline='top';
   for(let i=0;i<n;i++){
-    if(!vis(i)||T[i]===0||!onScreen(i)) continue;
-    const strong = i===sel||i===hover||(dsel&&dsel.has(i));
-    if(!strong && thr>0 && W[i]<thr) continue;
-    if(dim && !bright(i)) continue;
-    const fs=Math.min(Math.max(10/k,7),15/k);
+    if(!show[i]||X[i]<vx0||X[i]>vx1||Y[i]<vy0||Y[i]>vy1) continue;
+    const strong=i===sel||i===hover||(dsel&&dsel.has(i));
+    if(!strong&&NPAP[i]<thr) continue;
+    if(dim&&!bright(i)) continue;
+    const fs=Math.min(Math.max(12/k,7.5),17/k);
     ctx.font=`400 ${fs}px "IBM Plex Sans KR",sans-serif`;
+    ctx.lineWidth=Math.min(3.4/k,5); ctx.strokeStyle=COL.ground;
+    ctx.strokeText(NAME[i],X[i],Y[i]+R[i]+3.5/k);      // 한지색 테두리로 바탕에서 띄운다
     ctx.fillStyle=strong?COL.ink:COL.ink2;
-    ctx.fillText(N[i][1],X[i],Y[i]+R[i]+3/k);
+    ctx.fillText(NAME[i],X[i],Y[i]+R[i]+3.5/k);
+  }
+
+  /* 6. 갈래 이름패 */
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  for(let g=0;g<NG;g++){
+    const [px,py]=FIELDS[g].at;
+    const on=brightF(g);
+    const fs=Math.min(Math.max(23/k,11),34/k);
+    ctx.font=`700 ${fs}px "Gowun Batang",serif`;
+    const tw=ctx.measureText(FIELDS[g].name).width, ph=fs*1.75, pw=tw+fs*1.5;
+    ctx.globalAlpha=on?1:.28;
+    ctx.fillStyle=COL.panel; ctx.strokeStyle=on?hueOf(g):COL.edge;
+    ctx.lineWidth=Math.min(1.6/k,2.6);
+    const rr=Math.min(3/k,5);
+    ctx.beginPath(); ctx.roundRect(px-pw/2,py-ph/2,pw,ph,rr);
+    ctx.fill(); ctx.stroke();
+    ctx.fillStyle=on?COL.ink:COL.ink3;
+    ctx.fillText(FIELDS[g].name,px,py+fs*0.06);
+    ctx.globalAlpha=1;
   }
 }
-
 function loop(){
-  if(cooling||alpha>0.0085) tick();
-  if(!fitted && !cooling){ fit(); fitted=true; }
-  draw();
+  if(!alive()) return;                    // 새 자료로 다시 시작했으면 옛 고리는 여기서 끝난다
+  // dirty 를 먼저 내린다. draw() 가 터지면 예전엔 초당 60번씩 같은 예외를 다시 냈다.
+  if(dirty){ dirty=false; try{ draw(); }catch(err){ console.error('지도 그리기 실패', err); } }
   requestAnimationFrame(loop);
 }
-loop();
-if(document.fonts&&document.fonts.ready) document.fonts.ready.then(draw);
+fit(); loop();
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(mark);
 
 /* ── 조작 ── */
 const toWorld=(px,py)=>[(px-tx)/k,(py-ty)/k];
 function pick(px,py){
   const [wx,wy]=toWorld(px,py); let best=-1,bd=Infinity;
   for(let i=0;i<n;i++){
-    if(!vis(i)) continue;
-    const dx=X[i]-wx, dy=Y[i]-wy, d=dx*dx+dy*dy, rr=(R[i]+7/k)**2;
+    if(!show[i]) continue;
+    const dx=X[i]-wx, dy=Y[i]-wy, d=dx*dx+dy*dy, rr=(R[i]+9/k)**2;
     if(d<rr&&d<bd){ bd=d; best=i; }
   }
   return best;
 }
-const tip=document.getElementById('tip');
-const label=i=>T[i]===0?N[i][1]:`${N[i][1]} · ${N[i][3]}편`;
 let drag=null, moved=false;
-
 cv.addEventListener('pointerdown',e=>{
   cv.setPointerCapture(e.pointerId); moved=false;
-  const i=pick(e.offsetX,e.offsetY);
-  if(i>=0){ drag={node:i}; fixed[i]=1; alpha=Math.max(alpha,.3); cooling=true; }
-  else drag={pan:true,x:e.offsetX-tx,y:e.offsetY-ty};
+  dismissHint();
+  drag={x:e.offsetX-tx,y:e.offsetY-ty};
   cv.classList.add('grabbing');
-});
+},SIG);
 cv.addEventListener('pointermove',e=>{
-  if(drag){
-    moved=true;
-    if(drag.pan){ tx=e.offsetX-drag.x; ty=e.offsetY-drag.y; }
-    else{ const [wx,wy]=toWorld(e.offsetX,e.offsetY); X[drag.node]=wx; Y[drag.node]=wy; VX[drag.node]=VY[drag.node]=0; }
-    return;
-  }
+  if(drag){ moved=true; tx=e.offsetX-drag.x; ty=e.offsetY-drag.y; mark(); return; }
   const i=pick(e.offsetX,e.offsetY);
   cv.classList.toggle('pointing',i>=0);
   if(i!==hover){
-    hover=i;
-    if(i>=0){ tip.textContent=label(i); tip.classList.add('on'); }
+    hover=i; mark();
+    if(i>=0){ tip.textContent=`${NAME[i]} · 논문 ${NPAP[i]}편 · ${FIELDS[CM[i]].name}`; tip.classList.add('on'); }
     else tip.classList.remove('on');
   }
   if(i>=0){
@@ -566,136 +845,369 @@ cv.addEventListener('pointermove',e=>{
     tip.style.left=Math.min(e.clientX+14,innerWidth-r.width-10)+'px';
     tip.style.top=Math.min(e.clientY+16,innerHeight-r.height-10)+'px';
   }
-});
-addEventListener('pointerup',()=>{
+},SIG);
+addEventListener('pointerup',e=>{
   cv.classList.remove('grabbing');
-  if(drag&&!drag.pan){ fixed[drag.node]=0; if(!moved) select(drag.node); }
+  if(drag&&!moved){
+    const i=pick(e.offsetX!=null?e.offsetX:0,e.offsetY!=null?e.offsetY:0);
+    if(i>=0) showKeyword(i);
+  }
   drag=null;
-});
+},SIG);
+const EMBEDDED=(()=>{ try{ return window.top!==window.self; }catch(e){ return true; } })();
+let hintT=0;
 cv.addEventListener('wheel',e=>{
+  dismissHint();
+  if(EMBEDDED&&!e.ctrlKey&&!e.metaKey){
+    tip.textContent=/Mac/i.test(navigator.platform)?'⌘ + 스크롤로 확대':'Ctrl + 스크롤로 확대';
+    tip.style.left=(e.clientX+14)+'px'; tip.style.top=(e.clientY+16)+'px';
+    tip.classList.add('on'); clearTimeout(hintT);
+    hintT=setTimeout(()=>tip.classList.remove('on'),1100);
+    return;
+  }
   e.preventDefault();
   const f=Math.exp(-e.deltaY*(e.deltaMode===1?0.03:0.0016));
-  const nk=Math.max(0.08,Math.min(9,k*f));
-  tx=e.offsetX-(e.offsetX-tx)*(nk/k); ty=e.offsetY-(e.offsetY-ty)*(nk/k); k=nk;
-},{passive:false});
+  const nk=Math.max(0.06,Math.min(7,k*f));
+  tx=e.offsetX-(e.offsetX-tx)*(nk/k); ty=e.offsetY-(e.offsetY-ty)*(nk/k); k=nk; mark();
+},Object.assign({passive:false},SIG));
 
-/* ── 서지 카드 ── */
-const card=document.getElementById('card'), kBody=document.getElementById('k-body'), kKind=document.getElementById('k-kind');
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const KIND=['논문','키워드','연구자'];
-const kwIndex=new Map(), auIndex=new Map();
-for(let i=NP;i<n;i++) (T[i]===1?kwIndex:auIndex).set(N[i][1],i);
-
-function select(i){
-  sel=i; focusSet=new Set([i,...adj[i]]);
-  kKind.textContent=KIND[T[i]]; kKind.dataset.t=T[i];
-  kBody.innerHTML=T[i]===0?paperHTML(i):groupHTML(i);
-  card.classList.add('open'); kBody.scrollTop=0;
-  kBody.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>{ const j=+b.dataset.go; select(j); center(j); });
+/* ── 카드 ── */
+let stack=[];
+function openCard(kind,html,st){
+  kKind.textContent=kind; kBody.innerHTML=html;
+  card.classList.add('open'); kBody.scrollTop=0; kBack.hidden=stack.length===0;
+  kBody.querySelectorAll('[data-kw]').forEach(b=>b.onclick=()=>{ if(st)stack.push(st); showKeyword(+b.dataset.kw,true); });
+  kBody.querySelectorAll('[data-pp]').forEach(b=>b.onclick=()=>{ if(st)stack.push(st); showPaper(+b.dataset.pp); });
+  kBody.querySelectorAll('[data-au]').forEach(b=>b.onclick=()=>{ if(st)stack.push(st); showAuthor(+b.dataset.au); });
+  kBody.querySelectorAll('[data-fd]').forEach(b=>b.onclick=()=>{ selectField(+b.dataset.fd); });
 }
-function paperHTML(i){
-  const m=META[i], nd=N[i];
-  const issue=m[2]?`제${m[2]}권 ${m[3]||1}호`:'—';
-  const pages=m[4]?`${m[4]}–${m[5]}`:'—';
-  const kw=m[6].map(t=>{const j=kwIndex.get(t); return j==null?`<span class="chip" style="cursor:default">${esc(t)}</span>`:`<button class="chip" data-go="${j}">${esc(t)}</button>`;}).join('');
-  const au=m[0].map(a=>{const j=auIndex.get(a); return j==null?`<span class="chip" style="cursor:default">${esc(a)}</span>`:`<button class="chip" data-go="${j}">${esc(a)}</button>`;}).join('');
-  return `<h2>${esc(nd[1])}</h2>
-    <dl>
-      <dt>저자</dt><dd><div class="chips">${au}</div></dd>
-      ${m[1]?`<dt>소속</dt><dd>${esc(m[1])}</dd>`:''}
-      <dt>수록</dt><dd class="mono">복식 ${issue} · ${nd[2]}</dd>
-      <dt>면수</dt><dd class="mono">${pages}</dd>
-      <dt>피인용</dt><dd class="mono">${nd[3]}회</dd>
-      <dt>갈래</dt><dd>${esc(FIELDS[COMM[i]].name)}</dd>
-    </dl>
-    ${m[6].length?`<p class="sub">키워드</p><div class="chips">${kw}</div>`:''}`;
+kBack.onclick=()=>{
+  const st=stack.pop(); if(!st) return;
+  const keep=stack.slice(); 
+  if(st.t==='kw') showKeyword(st.i,true); else if(st.t==='pp') showPaper(st.i); else showAuthor(st.i);
+  stack=keep;
+  kBack.hidden=stack.length===0;
+};
+function closeCard(){
+  card.classList.remove('open'); sel=-1; focusSet=null; trace=null;
+  traceBar.classList.remove('on'); stack=[]; kBack.hidden=true; mark();
 }
-function groupHTML(i){
-  const ps=adj[i].filter(j=>T[j]===0).sort((a,b)=>N[b][2]-N[a][2]);
-  const rows=ps.map(j=>`<button data-go="${j}"><span class="yr">${N[j][2]}</span>${esc(N[j][1])}</button>`).join('');
-  return `<h2>${esc(N[i][1])}</h2>
-    <dl><dt>논문 수</dt><dd class="mono">${ps.length}편</dd>
-    <dt>기간</dt><dd class="mono">${ps.length?`${N[ps[ps.length-1]][2]}–${N[ps[0]][2]}`:'—'}</dd>
-    <dt>갈래</dt><dd>${esc(FIELDS[COMM[i]].name)}</dd></dl>
-    <p class="sub">관련 논문</p><div class="list">${rows}</div>`;
-}
-function center(i){ const k2=Math.max(k,1.9); tx=w/2-X[i]*k2; ty=h/2-Y[i]*k2; k=k2; }
-function closeCard(){ card.classList.remove('open'); sel=-1; focusSet=null; }
 document.getElementById('k-x').onclick=closeCard;
+const AUIDX=new Map(AUTHORS.map(([a],i)=>[a,i]));
+const paperRow=pi=>`<button data-pp="${pi}"><span class="yr">${PAPERS[pi][1]}</span>${esc(PAPERS[pi][0])}</button>`;
+
+function showKeyword(i,fromCard){
+  sel=i; focusSet=new Set([i,...adj[i]]); trace=null; traceBar.classList.remove('on');
+  if(!fromCard) stack=[]; mark();
+  const ps=KP[i].slice().sort((a,b)=>PAPERS[b][1]-PAPERS[a][1]);
+  const ys=ps.map(p=>PAPERS[p][1]);
+  const nb=adj[i].slice().sort((a,b)=>(nbW.get(i+'_'+b)||0)-(nbW.get(i+'_'+a)||0)).slice(0,12);
+  openCard('키워드',
+   `<h2>${esc(NAME[i])}</h2>
+    <dl><dt>논문</dt><dd class="mono">${ps.length}편</dd>
+    <dt>기간</dt><dd class="mono">${ys.length?`${Math.min(...ys)}–${Math.max(...ys)}`:'—'}</dd>
+    <dt>갈래</dt><dd><button class="chip" data-fd="${CM[i]}">${esc(FIELDS[CM[i]].name)}</button></dd></dl>
+    ${nb.length?`<p class="sub">함께 등장한 키워드</p><div class="chips" style="margin-bottom:15px">
+      ${nb.map(j=>`<button class="chip" data-kw="${j}">${esc(NAME[j])}<span class="cnt"> ${nbW.get(i+'_'+j)}</span></button>`).join('')}</div>`:''}
+    <p class="sub">논문 ${ps.length}편</p><div class="list">${ps.map(paperRow).join('')}</div>`,
+   {t:'kw',i});
+}
+function showPaper(pi){
+  const p=PAPERS[pi];
+  const t=buildTrace([pi], p[0].length>26?p[0].slice(0,26)+'…':p[0], `${p[1]} · 키워드 ${PK[pi].length}개`);
+  setTrace(t); if(t) fitTo(t.set);
+  const au=PA[pi].map(a=>{const j=AUIDX.get(a);
+    return j==null?`<span class="chip" data-dead>${esc(a)}</span>`:`<button class="chip" data-au="${j}">${esc(a)}</button>`;}).join('');
+  const kws=PK[pi].map(j=>`<button class="chip" data-kw="${j}">${esc(NAME[j])}</button>`).join('');
+  openCard('논문',
+   `<h2>${esc(p[0])}</h2>
+    <dl><dt>저자</dt><dd><div class="chips">${au}</div></dd>
+    ${p[7]?`<dt>소속</dt><dd>${esc(p[7])}</dd>`:''}
+    <dt>수록</dt><dd class="mono">복식 ${p[3]?`제${p[3]}권 ${p[4]||1}호`:'—'} · ${p[1]}</dd>
+    <dt>면수</dt><dd class="mono">${p[5]?`${p[5]}–${p[6]}`:'—'}</dd>
+    <dt>피인용</dt><dd class="mono">${p[2]}회</dd></dl>
+    ${kws?`<p class="sub">지도 위 키워드</p><div class="chips">${kws}</div>`
+        :`<p class="empty">이 논문의 키워드는 지도에 오르지 않았습니다. 지도에는 세 편 이상에 쓰인 키워드만 실었습니다.</p>`}`,
+   {t:'pp',i:pi});
+}
+function showAuthor(ai){
+  const [name,ps]=AUTHORS[ai];
+  const ys=ps.map(p=>PAPERS[p][1]);
+  const t=buildTrace(ps,name,`논문 ${ps.length}편 · 키워드 ${new Set(ps.flatMap(p=>PK[p])).size}개`);
+  setTrace(t); if(t) fitTo(t.set);
+  // 이 연구자가 어느 갈래에 걸쳐 있는가
+  const tally=new Map();
+  if(t) for(const kk of t.set) tally.set(CM[kk],(tally.get(CM[kk])||0)+1);
+  const spread=[...tally.entries()].sort((a,b)=>b[1]-a[1])
+    .map(([g,c])=>`<button class="chip" data-fd="${g}"><i class="sw" style="background:var(--p${g%10})"></i>${esc(FIELDS[g].name)}<span class="cnt"> ${c}</span></button>`).join('');
+  openCard('연구자',
+   `<h2>${esc(name)}</h2>
+    <dl><dt>논문</dt><dd class="mono">${ps.length}편</dd>
+    <dt>기간</dt><dd class="mono">${Math.min(...ys)}–${Math.max(...ys)}</dd>
+    <dt>키워드</dt><dd class="mono">${t?t.set.size:0}개</dd></dl>
+    ${spread?`<p class="sub">걸쳐 있는 갈래</p><div class="chips" style="margin-bottom:15px">${spread}</div>`:''}
+    ${t?'':'<p class="empty">이 연구자의 논문에는 지도에 오른 키워드가 없습니다.</p>'}
+    <p class="sub">논문 ${ps.length}편</p>
+    <div class="list">${ps.slice().sort((a,b)=>PAPERS[b][1]-PAPERS[a][1]).map(paperRow).join('')}</div>`,
+   {t:'au',i:ai});
+}
+function showField(g){
+  const ks=[]; for(let i=0;i<n;i++) if(CM[i]===g) ks.push(i);
+  ks.sort((a,b)=>NPAP[b]-NPAP[a]);
+  openCard('연구 갈래',
+   `<h2>${esc(FIELDS[g].name)}</h2>
+    <dl><dt>키워드</dt><dd class="mono">${FIELDS[g].kws}개</dd>
+    <dt>논문</dt><dd class="mono">${FIELDS[g].papers}편</dd></dl>
+    <p class="sub">이 갈래의 키워드</p>
+    <div class="chips">${ks.map(i=>`<button class="chip" data-kw="${i}">${esc(NAME[i])}<span class="cnt"> ${NPAP[i]}</span></button>`).join('')}</div>`,
+   null);
+}
 
 /* ── 검색 ── */
 const q=document.getElementById('q');
+const norm=s=>s.toLowerCase().replace(/\s+/g,'');
 q.addEventListener('input',()=>{
-  const v=q.value.trim().toLowerCase();
-  if(!v){ querySet=null; return; }
-  const s=new Set();
-  for(let i=0;i<n;i++) if(N[i][1].toLowerCase().includes(v)) s.add(i);
-  for(const i of [...s]) for(const j of adj[i]) s.add(j);
-  querySet=s;
-});
+  const v=norm(q.value.trim());
+  if(!v){ querySet=null; trace=null; traceBar.classList.remove('on'); mark(); return; }
+  const hitK=[]; for(let i=0;i<n;i++) if(norm(NAME[i]).includes(v)) hitK.push(i);
+  const s=new Set(hitK); for(const i of hitK) for(const j of adj[i]) s.add(j);
+  sel=-1; focusSet=null; stack=[];
+  const hitA=[]; AUTHORS.forEach(([a],i)=>{ if(norm(a).includes(v)) hitA.push(i); });
+  const hitP=[]; for(let i=0;i<PAPERS.length&&hitP.length<40;i++) if(norm(PAPERS[i][0]).includes(v)) hitP.push(i);
+  // 연구자나 논문이 걸리면 그들이 쓴 키워드까지 지도에 띄운다
+  const pis=[...new Set([...hitA.flatMap(i=>AUTHORS[i][1]), ...hitP])];
+  const t=pis.length ? buildTrace(pis, q.value.trim(),
+      `연구자 ${hitA.length}명 · 논문 ${pis.length}편`) : null;
+  if(t){ for(const kk of hitK) t.set.add(kk); setTrace(t); querySet=null; }
+  else { trace=null; traceBar.classList.remove('on'); querySet=s; }
+  mark();
+  openCard('검색',
+   `<h2>‘${esc(q.value.trim())}’</h2>
+    ${hitK.length?`<p class="sub">키워드 ${hitK.length}개</p><div class="chips" style="margin-bottom:16px">
+      ${hitK.slice(0,40).map(i=>`<button class="chip" data-kw="${i}">${esc(NAME[i])}<span class="cnt"> ${NPAP[i]}</span></button>`).join('')}</div>`:''}
+    ${hitA.length?`<p class="sub">연구자 ${hitA.length}명</p><div class="chips" style="margin-bottom:16px">
+      ${hitA.slice(0,40).map(i=>`<button class="chip" data-au="${i}">${esc(AUTHORS[i][0])}<span class="cnt"> ${AUTHORS[i][1].length}</span></button>`).join('')}</div>`:''}
+    ${hitP.length?`<p class="sub">논문 제목 ${hitP.length}${hitP.length>=40?'+':''}편</p><div class="list">${hitP.map(paperRow).join('')}</div>`:''}
+    ${(!hitK.length&&!hitA.length&&!hitP.length)?`<p class="empty">해당하는 키워드·연구자·논문이 없습니다.</p>`:''}`,
+   null);
+},SIG);
 
-/* ── 필터 ── */
-const on=[true,true,true];
-let yLo=0,yHi=0;
+/* ── 갈래 · 연도 ── */
+let yMin=9999,yMax=0;
+for(const p of PAPERS){ if(p[1]<yMin)yMin=p[1]; if(p[1]>yMax)yMax=p[1]; }
+let yLo=yMin,yHi=yMax;
 function applyFilters(){
+  if(yLo===yMin&&yHi===yMax){ show.fill(1); mark(); return; }
   for(let i=0;i<n;i++){
-    if(T[i]===0) show[i]=on[0]&&N[i][2]>=yLo&&N[i][2]<=yHi ?1:0;
-    else show[i]=on[T[i]]?1:0;
+    let ok=0;
+    for(const pi of KP[i]){ const y=PAPERS[pi][1]; if(y>=yLo&&y<=yHi){ ok=1; break; } }
+    show[i]=ok;
   }
-  for(let i=NP;i<n;i++) if(show[i]&&!adj[i].some(j=>show[j])) show[i]=0;
+  mark();
 }
-[0,1,2].forEach(t=>{
-  const b=document.getElementById('f'+t);
-  document.getElementById('c'+t).textContent=N.filter(d=>d[0]===t).length.toLocaleString('ko');
-  b.onclick=()=>{ on[t]=!on[t]; b.setAttribute('aria-pressed',on[t]); applyFilters(); };
-});
-
 const fieldList=document.getElementById('fieldList');
+function selectField(g){
+  fieldSel = fieldSel===g ? -1 : g;
+  [...fieldList.children].forEach((c,ci)=>c.setAttribute('aria-pressed',ci===fieldSel));
+  trace=null; traceBar.classList.remove('on');
+  if(fieldSel>=0) showField(fieldSel); else closeCard();
+  mark();
+}
 FIELDS.forEach((f,gi)=>{
   const b=document.createElement('button');
   b.setAttribute('aria-pressed','false');
-  b.innerHTML=`${esc(f.name)}<span class="num">${f.papers}</span>`;
-  b.onclick=()=>{
-    fieldSel = fieldSel===gi ? -1 : gi;
-    [...fieldList.children].forEach((c,ci)=>c.setAttribute('aria-pressed', ci===fieldSel));
-  };
+  b.innerHTML=`<i class="sw" style="background:var(--p${gi%10})"></i>${esc(f.name)}<span class="num">${f.papers}</span>`;
+  b.onclick=()=>selectField(gi);
   fieldList.appendChild(b);
 });
+/* ── 발행연도 고르개 ──
+   막대 두 개를 위아래로 겹쳐 두었더니 어느 쪽이 시작인지 알 수 없다는 말을 들었다.
+   자 하나에 손잡이 둘을 얹고, 그 뒤에 해마다의 논문 수를 세워 둔다.
+   고르는 자리가 곧 자료가 있는 자리라서 눈으로 보고 집을 수 있다.        */
+const yslider=document.getElementById('yslider'), ysel=document.getElementById('ysel'),
+      ybars=document.getElementById('ybars'), ypre=document.getElementById('ypre'),
+      yspan=document.getElementById('y-span'), ynote=document.getElementById('y-note'),
+      yall=document.getElementById('y-all'), yknob=[document.getElementById('yk0'),
+                                                    document.getElementById('yk1')];
+const ySpanN=yMax-yMin;
 
-const ya=document.getElementById('ya'), yb=document.getElementById('yb');
-let minY=9999,maxY=0;
-for(let i=0;i<NP;i++){ if(N[i][2]<minY)minY=N[i][2]; if(N[i][2]>maxY)maxY=N[i][2]; }
-yLo=minY; yHi=maxY;
-[ya,yb].forEach(s=>{ s.min=minY; s.max=maxY; s.step=1; });
-ya.value=minY; yb.value=maxY;
-function syncYears(){
-  yLo=Math.min(+ya.value,+yb.value); yHi=Math.max(+ya.value,+yb.value);
-  document.getElementById('y-lo').textContent=yLo;
-  document.getElementById('y-hi').textContent=yHi;
-  applyFilters();
+// 해마다 몇 편인지
+const yCount=new Array(ySpanN+1).fill(0);
+for(const p of PAPERS) yCount[p[1]-yMin]++;
+const yPeak=Math.max(1,...yCount);
+const barEl=yCount.map(c=>{
+  const b=document.createElement('i');
+  b.style.height=Math.max(2,Math.round(c/yPeak*100))+'%';
+  ybars.appendChild(b); return b;
+});
+
+const KNOB=9.5;                                     // 손잡이 반지름. css --r 과 같아야 한다
+const yAtPct=v=>`calc(${KNOB}px + (100% - ${KNOB*2}px) * ${(v-yMin)/(ySpanN||1)})`;
+function paintYears(){
+  ysel.style.left=yAtPct(yLo);
+  ysel.style.width=`calc((100% - ${KNOB*2}px) * ${(yHi-yLo)/(ySpanN||1)})`;
+  yknob[0].style.left=yAtPct(yLo); yknob[1].style.left=yAtPct(yHi);
+  yknob[0].dataset.y=yLo; yknob[1].dataset.y=yHi;
+  yknob.forEach((k,i)=>{
+    k.setAttribute('aria-valuemin',yMin); k.setAttribute('aria-valuemax',yMax);
+    k.setAttribute('aria-valuenow',i?yHi:yLo); k.setAttribute('aria-valuetext',(i?yHi:yLo)+'년');
+  });
+  barEl.forEach((b,i)=>b.classList.toggle('on',yMin+i>=yLo&&yMin+i<=yHi));
+  yspan.textContent=`${yLo} — ${yHi}`;
+  const whole=yLo===yMin&&yHi===yMax;
+  yall.hidden=whole;
+  let cnt=0; for(const p of PAPERS) if(p[1]>=yLo&&p[1]<=yHi) cnt++;
+  ynote.textContent = whole ? `${ySpanN+1}년치 논문 ${cnt.toLocaleString('ko')}편 전부`
+                            : `이 기간의 논문 ${cnt.toLocaleString('ko')}편 · ${yHi-yLo+1}년치`;
+  [...ypre.children].forEach(b=>b.setAttribute('aria-pressed',
+    +b.dataset.lo===yLo && +b.dataset.hi===yHi));
 }
-ya.oninput=yb.oninput=syncYears; syncYears();
+function setYears(lo,hi){
+  yLo=Math.max(yMin,Math.min(yMax,lo)); yHi=Math.max(yMin,Math.min(yMax,hi));
+  if(yLo>yHi) [yLo,yHi]=[yHi,yLo];
+  paintYears(); applyFilters();
+}
 
-document.getElementById('t-p').textContent=NP.toLocaleString('ko');
-document.getElementById('t-k').textContent=kwIndex.size.toLocaleString('ko');
-document.getElementById('t-a').textContent=auIndex.size.toLocaleString('ko');
-document.getElementById('t-y').textContent=`${minY}–${String(maxY).slice(2)}`;
+// 열 해 단위 지름길 — 흔히 찾는 기간은 한 번에 집게 한다
+const decs=[];
+for(let d=Math.floor(yMin/10)*10; d<=yMax; d+=10) decs.push(d);
+[['전체',yMin,yMax], ...decs.map(d=>[`${String(d).slice(2)}년대`,
+   Math.max(yMin,d), Math.min(yMax,d+9)])].forEach(([label,lo,hi])=>{
+  const b=document.createElement('button');
+  b.textContent=label; b.dataset.lo=lo; b.dataset.hi=hi;
+  b.setAttribute('aria-pressed','false');
+  b.onclick=()=>setYears(lo,hi);
+  ypre.appendChild(b);
+});
+yall.onclick=()=>setYears(yMin,yMax);
 
-document.getElementById('fit').onclick=()=>fit();
+// 끌기 — 가까운 손잡이가 따라온다. 자 아무 데나 눌러도 잡힌다.
+const yAt=e=>{
+  const r=yslider.getBoundingClientRect();
+  return Math.round(yMin+(e.clientX-r.left-KNOB)/Math.max(1,r.width-KNOB*2)*ySpanN);
+};
+let dragI=-1;
+function beginDrag(e,i){
+  dragI = i>=0 ? i : (Math.abs(yAt(e)-yLo)<=Math.abs(yAt(e)-yHi) ? 0 : 1);
+  yknob[dragI].classList.add('drag');
+  yslider.setPointerCapture(e.pointerId);
+  moveDrag(e);
+}
+function moveDrag(e){
+  if(dragI<0) return;
+  const v=yAt(e);
+  if(dragI===0){ if(v>yHi){ dragI=1; setYears(yHi,v); } else setYears(v,yHi); }
+  else         { if(v<yLo){ dragI=0; setYears(v,yLo); } else setYears(yLo,v); }
+  yknob.forEach((k,i)=>k.classList.toggle('drag',i===dragI));
+}
+yslider.addEventListener('pointerdown',e=>{
+  const i=yknob.indexOf(e.target);
+  beginDrag(e,i); e.preventDefault();
+},SIG);
+yslider.addEventListener('pointermove',moveDrag,SIG);
+['pointerup','pointercancel'].forEach(t=>yslider.addEventListener(t,()=>{
+  dragI=-1; yknob.forEach(k=>k.classList.remove('drag'));
+},SIG));
+// 자판 — 화살표는 한 해씩, PageUp/Down 은 열 해씩
+yknob.forEach((k,i)=>k.addEventListener('keydown',e=>{
+  const step={ArrowLeft:-1,ArrowDown:-1,ArrowRight:1,ArrowUp:1,PageDown:-10,PageUp:10}[e.key];
+  if(step!=null){ i ? setYears(yLo,yHi+step) : setYears(yLo+step,yHi); }
+  else if(e.key==='Home'){ i ? setYears(yLo,yLo) : setYears(yMin,yHi); }
+  else if(e.key==='End'){  i ? setYears(yLo,yMax) : setYears(yHi,yHi); }
+  else return;
+  e.preventDefault();
+},SIG));
+setYears(yMin,yMax);
+
+document.getElementById('t-k').textContent=n.toLocaleString('ko');
+document.getElementById('t-p').textContent=PAPERS.length.toLocaleString('ko');
+document.getElementById('t-a').textContent=AUTHORS.length.toLocaleString('ko');
+document.getElementById('t-y').textContent=`${yMin}–${yMax}`;
+
+document.getElementById('fit').onclick=()=>{ fit(); mark(); };
 document.getElementById('theme').onclick=()=>{
   const cur=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
   document.documentElement.dataset.theme=cur==='dark'?'light':'dark';
-  readTheme();
+  readTheme(); mark();
 };
+addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeCard(); querySet=null; q.value=''; q.blur(); mark(); } },SIG);
 
-/* ── 대문 열기 ── */
+/* ── 이 판이 어떤 틀인지 ── */
+document.getElementById('stamp').textContent =
+  `지도 판 11 · ${D.designLabel}` + (typeof fresh==='string' ? ` · ${fresh} 최신화` : '');
+document.getElementById('frameNote').innerHTML={
+  bojagi:'조각보에는 위아래도 중심도 없습니다. 조각의 <b>자리</b>는 갈래끼리의 연관성이, <b>크기</b>는 논문 수가 정합니다.',
+  hyungbae:'흉배 방형 안에 조각보를 앉혔습니다. 조각의 <b>자리</b>는 갈래끼리의 연관성이, <b>크기</b>는 논문 수가 정합니다.',
+  chaekgado:'책가도의 칸처럼 <b>갈래마다 같은 크기의 칸</b>을 줍니다. 칸 사이에 크고 작음이 없습니다.',
+  saekdong:'색동 띠처럼 <b>갈래마다 같은 크기의 띠</b>를 둘렀습니다. 가운데가 비어 중심이 되는 갈래가 없습니다.',
+  hanok:'한옥 정면 안에 지도를 앉혔습니다. 자리는 <b>갈래끼리의 연관성</b>이, 조각 크기는 <b>논문 수</b>가 정합니다.'
+}[D.design]||'';
+
+/* ── 첫 안내 ── */
+let hintShown=false, touched=false;
+function showHint(){
+  if(touched) return;                            // 벌써 스스로 알아낸 사람에게는 띄우지 않는다
+  const touch=matchMedia('(pointer:coarse)').matches;
+  hintMain.textContent = touch ? '두 손가락으로 확대 · 축소'
+    : EMBEDDED ? (/Mac/i.test(navigator.platform) ? '⌘ + 스크롤로 확대 · 축소'
+                                                  : 'Ctrl + 스크롤로 확대 · 축소')
+    : '스크롤로 확대 · 축소';
+  hintBox.classList.add('on'); hintShown=true;
+}
+function dismissHint(){
+  touched=true;
+  if(!hintShown) return;
+  hintShown=false; hintBox.classList.remove('on');
+}
+
+/* ── 대문 ── */
 const gate=document.getElementById('gate');
-document.getElementById('gateStat').textContent =
-  `논문 ${NP.toLocaleString('ko')}편 · 키워드 ${kwIndex.size.toLocaleString('ko')}개 · 연구자 ${auIndex.size.toLocaleString('ko')}명`;
+document.getElementById('gateStat').textContent=
+  `키워드 ${n.toLocaleString('ko')}개 · 논문 ${PAPERS.length.toLocaleString('ko')}편 · 연구자 ${AUTHORS.length.toLocaleString('ko')}명`;
 document.getElementById('enter').onclick=()=>{
   gate.classList.add('open');
-  setTimeout(()=>{ gate.style.display='none'; fit(); }, 1500);
+  setTimeout(()=>{ gate.style.display='none'; fit(); mark(); },1500);
+  setTimeout(showHint, 1700);              // 문이 다 열리고 지도가 자리를 잡자마자
 };
+}   /* ── boot 끝 ── */
 
-addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeCard(); querySet=null; q.value=''; q.blur(); } });
+/* ── 자기 갱신 ──
+   먼저 품고 있는 자료로 그린다. 네트워크를 기다리지 않는다 — 평소에는 그게 최신이다.
+   그 다음 조용히 판만 물어본다(version.json, 60바이트쯤). 새 판일 때만 자료를 받는다.
+   어느 단계든 어긋나면 그냥 품은 자료로 남는다. 못 받아도 페이지는 이미 떠 있다.
+
+   갈아끼우기는 '아직 대문 안에 있을 때'만 한다. 이미 들어가 지도를 보고 있는 사람의
+   화면을 되돌려 놓는 것이 최신 자료보다 나을 리 없다. 그 사람은 다음 방문에 받는다.  */
+(function(){
+  boot(BAKED, null);                                  // 여기서 페이지가 뜬다
+
+  const base = (UPDATE_FROM||'').replace(/\/+$/,'');
+  if(!base || base.charAt(0)==='/' ||                 // 자리표시자가 그대로면 끈다
+     typeof fetch!=='function' || typeof AbortController!=='function') return;
+
+  const grab = (path, ms) => {
+    const ac = new AbortController();
+    const t = setTimeout(()=>ac.abort(), ms);
+    return fetch(base+path, {signal:ac.signal, cache:'no-cache'})
+      .then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .finally(()=>clearTimeout(t));
+  };
+  // 받아온 것이 정말 이 지도의 자료인지 본다. 반쯤 깨진 파일로 다시 그리면 더 나쁘다.
+  const sound = d => !!d && Array.isArray(d.kw) && d.kw.length>0
+                  && Array.isArray(d.cells) && Array.isArray(d.papers) && d.papers.length>0
+                  && Array.isArray(d.fields) && d.fields.length>0
+                  && Array.isArray(d.kp) && d.design===BAKED.design;
+  const entered = () => {                             // 대문을 이미 지났나
+    const g=document.getElementById('gate');
+    return !g || g.classList.contains('open') || g.style.display==='none';
+  };
+
+  grab('/costume-graph.version.json', 2500)
+    .then(v => (v && v.build && v.build!==BAKED.build) ? grab('/costume-graph.data.json', 20000) : null)
+    .then(d => { if(sound(d) && !entered()) boot(d, d.builtAt || '새 판'); })
+    .catch(()=>{});                                   // 조용히 품은 자료로 남는다
+})();
 </script>
+
+</body>
+</html>

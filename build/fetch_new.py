@@ -191,7 +191,10 @@ def main():
     extra.sort(key=lambda e: (e['발행연도'] or 0, e['권'] or 0, e['호'] or 0, e['시작 페이지'] or 0))
     json.dump(extra, open(EXTRA, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print(f'\n추가 {ok}건 / 실패 {fail}건  →  build/extra.json (누적 {len(extra)}건)')
-    return 0 if ok else 1
+    # 종료코드로 상황을 구분한다. update.sh 가 이걸 보고 경고와 오류를 가른다.
+    #   0  정상 (새 논문이 없거나, 있어서 받았거나)
+    #   2  새 논문을 찾았는데 하나도 못 받았다 — 사람이 봐야 한다
+    return 0 if ok else 2
 
 
 if __name__ == '__main__':

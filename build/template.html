@@ -291,6 +291,14 @@ dd.mono{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums
   input[type=search]{padding:10px 12px; font-size:15px}
   .card{top:auto; left:12px; right:12px; bottom:12px; width:auto; height:58%; transform:translateY(calc(100% + 22px))}
 }
+/* 폰을 가로로 눕히면 위아래가 모자란다 — 머리를 다시 왼쪽 좁은 난간으로 세운다 */
+@media (max-width:880px) and (orientation:landscape){
+  .rail{width:232px; height:auto; bottom:0; padding:14px 14px 12px; gap:10px;
+    background:linear-gradient(90deg,var(--ground) 88%,transparent)}
+  .masthead h1{font-size:20px}
+  .occasion{flex-wrap:wrap; row-gap:2px}
+  .card{top:10px; right:10px; bottom:10px; left:auto; width:min(420px,58vw); height:auto; transform:translateX(calc(100% + 22px))}
+}
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
 </style>
 </head>
@@ -616,8 +624,10 @@ const rail=document.getElementById('rail');
 function pads(tight){
   const wide=w>880, open=card.classList.contains('open');
   if(wide) return {l:366, r:open?512:44, t:tight?70:44, b:tight?70:44};
-  const head=rail?rail.getBoundingClientRect().height:0;
-  return {l:14, r:14, t:head+(tight?18:10), b:(open?h*0.58+24:20)+(tight?12:0)};
+  const rb=rail?rail.getBoundingClientRect():{width:0,height:0};
+  if(h<w)                                                // 가로로 눕힌 폰: 난간이 왼쪽에 선다
+    return {l:rb.width+8, r:open?Math.min(420,w*0.58)+22:14, t:tight?18:12, b:tight?18:12};
+  return {l:14, r:14, t:rb.height+(tight?18:10), b:(open?h*0.58+24:20)+(tight?12:0)};
 }
 function fit(){
   const P=pads(false);
@@ -631,13 +641,17 @@ function fit(){
   k=Math.min((w-P.l-P.r)/(x1-x0+m*2),(h-P.t-P.b)/(y1-y0+m*2));
   tx=P.l+(w-P.l-P.r)/2-((x0+x1)/2)*k;
   ty=P.t+(h-P.t-P.b)/2-((y0+y1)/2)*k;
-  if(w<=880){                                            // 폰: 세로가 남으면 위로 붙인다. 머리 밑이 휑하면 안 그려진 줄 안다
+  if(w<=880&&h>=w){                                      // 세로 폰: 세로가 남으면 위로 붙인다. 머리 밑이 휑하면 안 그려진 줄 안다
     const gap=(y0-m)*k+ty-P.t;
     if(gap>24) ty-=gap-24;
   }
 }
 resize();
-addEventListener('resize',()=>{ resize(); fit(); }, SIG);
+/* 창이 바뀌면 다시 앉힌다 — 다만 너비가 바뀌었을 때만. 폰에서는 자판이 올라오거나 주소창이
+   접힐 때도 높이만 바뀐 resize 가 오는데, 그때마다 보던 자리를 처음으로 되돌리면 안 된다.
+   너비가 바뀌는 건 돌리거나 폴더블을 펼친 때라 그땐 새로 앉히는 게 맞다. */
+let lastW=w;
+addEventListener('resize',()=>{ resize(); if(w!==lastW){ lastW=w; fit(); } mark(); }, SIG);
 
 const traceBar=document.getElementById('traceBar');
 let hover=-1, sel=-1, focusSet=null, querySet=null, fieldSel=-1, dirty=true;

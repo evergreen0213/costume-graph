@@ -60,7 +60,7 @@
 body{margin:0; background:var(--ground); color:var(--ink);
   font-family:"IBM Plex Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   font-weight:300; -webkit-font-smoothing:antialiased; overflow:hidden}
-canvas{display:block; position:fixed; inset:0; width:100%; height:100%; cursor:grab}
+canvas{display:block; position:fixed; inset:0; width:100%; height:100%; cursor:grab; touch-action:none}
 canvas.grabbing{cursor:grabbing} canvas.pointing{cursor:pointer}
 :focus-visible{outline:2px solid var(--brand); outline-offset:2px}
 
@@ -235,7 +235,7 @@ dd.mono{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums
 .gate img.mark{width:150px; height:auto; margin-bottom:20px}
 .gate.open .gate-inner > *:not(.house){transition:opacity .3s ease; opacity:0}
 
-.house{position:relative; width:min(430px,86vw); color:var(--ink); margin-bottom:26px}
+.house{position:relative; width:min(430px,74vw); color:var(--ink); margin-bottom:26px}   /* 처마가 114% 라 74vw 여야 폰에서 안 잘린다 */
 .house .eave{display:block; width:114%; margin-left:-7%; color:var(--ink)}
 .house .eave svg{display:block; width:100%; height:auto}
 .frame{
@@ -279,9 +279,16 @@ dd.mono{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums
   .gate.open .leaf.l,.gate.open .leaf.r{transform:none}
 }
 
+/* 폰 — 옆 난간을 위쪽 머리로 접는다. 제목 한 줄과 검색창만 남기고, 나머지는 지도에 자리를 내준다.
+   fit() 이 이 머리의 실제 높이를 재서 지도를 그 아래에 앉히므로 여기 높이를 바꿔도 지도는 따라온다. */
 @media (max-width:880px){
-  .rail{width:100%; height:auto; bottom:auto; background:linear-gradient(180deg,var(--ground) 82%,transparent); padding-bottom:24px; gap:12px}
-  .masthead p,.years,.foot,.fields,.legendbox{display:none}
+  .rail{width:100%; height:auto; bottom:auto; padding:14px 16px 12px; gap:10px;
+    background:linear-gradient(180deg,var(--ground) 84%,transparent); overflow:visible}
+  .masthead h1{font-size:22px; margin-bottom:4px}
+  .occasion{margin-bottom:0; font-size:11px}
+  .masthead p,.rule,.tally,.fieldbox,.years,.foot,.legendbox{display:none}
+  .lbl[for=q]{display:none}
+  input[type=search]{padding:10px 12px; font-size:15px}
   .card{top:auto; left:12px; right:12px; bottom:12px; width:auto; height:58%; transform:translateY(calc(100% + 22px))}
 }
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
@@ -309,7 +316,7 @@ dd.mono{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums
 
 <canvas id="cv"></canvas>
 
-<div class="rail">
+<div class="rail" id="rail">
   <div class="masthead">
     <h1>복식 연구 지도</h1>
     <div class="occasion">한국복식학회 창립 50주년 기념 <span>1976—2026</span></div>
@@ -328,7 +335,7 @@ dd.mono{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums
     <input type="search" id="q" placeholder="한복 · 조선시대 · 이유리" autocomplete="off" spellcheck="false">
   </div>
 
-  <div>
+  <div class="fieldbox">
     <div class="lbl">연구 갈래 — 조각 하나가 한 갈래</div>
     <div class="fields" id="fieldList"></div>
     <div class="sizekey" style="margin-top:11px">
@@ -602,19 +609,32 @@ function resize(){
   w=cv.clientWidth; h=cv.clientHeight;
   cv.width=Math.round(w*dpr); cv.height=Math.round(h*dpr);
 }
+/* 지도가 앉을 자리 — 난간·카드·머리에 가려지지 않는 여백.
+   폰에서는 난간이 위쪽 머리가 되고 높이가 글꼴·기기마다 다르므로 CSS 값을 믿지 않고 직접 잰다.
+   카드가 열려 있으면(아래 58% 시트) 그만큼 아래를 비운다. */
+const rail=document.getElementById('rail');
+function pads(tight){
+  const wide=w>880, open=card.classList.contains('open');
+  if(wide) return {l:366, r:open?512:44, t:tight?70:44, b:tight?70:44};
+  const head=rail?rail.getBoundingClientRect().height:0;
+  return {l:14, r:14, t:head+(tight?18:10), b:(open?h*0.58+24:20)+(tight?12:0)};
+}
 function fit(){
-  const wide=w>880;
-  const padL=wide?366:18, padR=wide?(card.classList.contains('open')?512:44):18, padY=wide?44:132;
+  const P=pads(false);
   let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
   for(const [px,py] of LAND){ if(px<x0)x0=px; if(px>x1)x1=px; if(py<y0)y0=py; if(py>y1)y1=py; }
   for(const o of DECOR){                                   // 고름 같은 바깥 장식까지
     const ps = o.t==='circle' ? [[o.c[0]-o.r,o.c[1]-o.r],[o.c[0]+o.r,o.c[1]+o.r]] : o.pts;
     for(const [px,py] of ps){ if(px<x0)x0=px; if(px>x1)x1=px; if(py<y0)y0=py; if(py>y1)y1=py; }
   }
-  const m=150;
-  k=Math.min((w-padL-padR)/(x1-x0+m*2),(h-padY*2)/(y1-y0+m*2));
-  tx=padL+(w-padL-padR)/2-((x0+x1)/2)*k;
-  ty=h/2-((y0+y1)/2)*k;
+  const m=w>880?150:60;
+  k=Math.min((w-P.l-P.r)/(x1-x0+m*2),(h-P.t-P.b)/(y1-y0+m*2));
+  tx=P.l+(w-P.l-P.r)/2-((x0+x1)/2)*k;
+  ty=P.t+(h-P.t-P.b)/2-((y0+y1)/2)*k;
+  if(w<=880){                                            // 폰: 세로가 남으면 위로 붙인다. 머리 밑이 휑하면 안 그려진 줄 안다
+    const gap=(y0-m)*k+ty-P.t;
+    if(gap>24) ty-=gap-24;
+  }
 }
 resize();
 addEventListener('resize',()=>{ resize(); fit(); }, SIG);
@@ -649,12 +669,11 @@ function fitTo(set){
   if(!set||!set.size) return;
   let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
   for(const i of set){ if(X[i]<x0)x0=X[i]; if(X[i]>x1)x1=X[i]; if(Y[i]<y0)y0=Y[i]; if(Y[i]>y1)y1=Y[i]; }
-  const wide=w>880;
-  const padL=wide?366:18, padR=wide?(card.classList.contains('open')?512:44):18, padY=wide?70:150;
+  const P=pads(true);
   const m=260;
-  k=Math.max(0.06,Math.min(2.4,Math.min((w-padL-padR)/(x1-x0+m*2),(h-padY*2)/(y1-y0+m*2))));
-  tx=padL+(w-padL-padR)/2-((x0+x1)/2)*k;
-  ty=h/2-((y0+y1)/2)*k;
+  k=Math.max(0.06,Math.min(2.4,Math.min((w-P.l-P.r)/(x1-x0+m*2),(h-P.t-P.b)/(y1-y0+m*2))));
+  tx=P.l+(w-P.l-P.r)/2-((x0+x1)/2)*k;
+  ty=P.t+(h-P.t-P.b)/2-((y0+y1)/2)*k;
   mark();
 }
 
@@ -785,14 +804,23 @@ function draw(){
     ctx.fillText(NAME[i],X[i],Y[i]+R[i]+3.5/k);
   }
 
-  /* 6. 갈래 이름패 */
+  /* 6. 갈래 이름패
+     화면에서 최소 몇 px 로 보일지는 화면 너비가 정한다 — 폰에서 지도가 작아졌는데 이름패만
+     책상 크기로 남아 있으면 지도를 덮어 버린다(실제로 그랬다). 그래도 겹치는 패는
+     논문이 많은 갈래부터 앉히고 나머지는 이번 축척에서 접어 둔다. 확대하면 다시 나온다. */
   ctx.textAlign='center'; ctx.textBaseline='middle';
-  for(let g=0;g<NG;g++){
+  const minPx=w>880?23:w>480?15:13, maxPx=w>880?34:22;
+  const placed=[];                                   // 이미 앉은 패의 화면 사각형
+  const order=[...Array(NG).keys()].sort((a,b)=>FIELDS[b].kws-FIELDS[a].kws);
+  for(const g of order){
     const [px,py]=FIELDS[g].at;
     const on=brightF(g);
-    const fs=Math.min(Math.max(23/k,11),34/k);
+    const fs=Math.min(Math.max(minPx/k,11),maxPx/k);
     ctx.font=`700 ${fs}px "Gowun Batang",serif`;
     const tw=ctx.measureText(FIELDS[g].name).width, ph=fs*1.75, pw=tw+fs*1.5;
+    const sx0=(px-pw/2)*k+tx, sy0=(py-ph/2)*k+ty, sx1=sx0+pw*k, sy1=sy0+ph*k, gap=4;
+    if(g!==fieldSel&&placed.some(r=>sx0<r[2]+gap&&sx1>r[0]-gap&&sy0<r[3]+gap&&sy1>r[1]-gap)) continue;
+    placed.push([sx0,sy0,sx1,sy1]);
     ctx.globalAlpha=on?1:.28;
     ctx.fillStyle=COL.panel; ctx.strokeStyle=on?hueOf(g):COL.edge;
     ctx.lineWidth=Math.min(1.6/k,2.6);
@@ -825,13 +853,37 @@ function pick(px,py){
   return best;
 }
 let drag=null, moved=false;
+/* 두 손가락 — 손가락 사이 거리로 축척을, 두 손가락 가운데로 자리를 정한다.
+   안내문이 "두 손가락으로 확대 · 축소" 라고 해 놓고 정작 캔버스는 휠만 받아서,
+   폰에서 손가락을 벌리면 브라우저가 페이지째 키워 버렸다. 이제 지도가 받는다. */
+const pts=new Map(); let pinch=null;
+// 옛 iOS 사파리는 touch-action 을 무시하고 자체 gesture 이벤트로 페이지를 키운다 — 캔버스 위에서는 막는다
+for(const t of ['gesturestart','gesturechange']) cv.addEventListener(t,e=>e.preventDefault(),Object.assign({passive:false},SIG));
+function zoomTo(nk,ax,ay){                        // 화면점 (ax,ay) 를 붙박이로 두고 축척을 nk 로
+  nk=Math.max(0.06,Math.min(7,nk));
+  tx=ax-(ax-tx)*(nk/k); ty=ay-(ay-ty)*(nk/k); k=nk;
+}
 cv.addEventListener('pointerdown',e=>{
   cv.setPointerCapture(e.pointerId); moved=false;
   dismissHint();
+  pts.set(e.pointerId,{x:e.offsetX,y:e.offsetY});
+  if(pts.size===2){
+    const [a,b]=[...pts.values()];
+    pinch={d:Math.hypot(a.x-b.x,a.y-b.y), mx:(a.x+b.x)/2, my:(a.y+b.y)/2, k, tx, ty};
+    drag=null; moved=true; return;
+  }
   drag={x:e.offsetX-tx,y:e.offsetY-ty};
   cv.classList.add('grabbing');
 },SIG);
 cv.addEventListener('pointermove',e=>{
+  if(pts.has(e.pointerId)) pts.set(e.pointerId,{x:e.offsetX,y:e.offsetY});
+  if(pinch&&pts.size>=2){
+    const [a,b]=[...pts.values()];
+    const d=Math.hypot(a.x-b.x,a.y-b.y), mx=(a.x+b.x)/2, my=(a.y+b.y)/2;
+    const nk=Math.max(0.06,Math.min(7,pinch.k*(d/Math.max(pinch.d,1))));
+    tx=mx-(pinch.mx-pinch.tx)*(nk/pinch.k); ty=my-(pinch.my-pinch.ty)*(nk/pinch.k); k=nk;
+    mark(); return;
+  }
   if(drag){ moved=true; tx=e.offsetX-drag.x; ty=e.offsetY-drag.y; mark(); return; }
   const i=pick(e.offsetX,e.offsetY);
   cv.classList.toggle('pointing',i>=0);
@@ -846,14 +898,18 @@ cv.addEventListener('pointermove',e=>{
     tip.style.top=Math.min(e.clientY+16,innerHeight-r.height-10)+'px';
   }
 },SIG);
-addEventListener('pointerup',e=>{
+function pointerEnd(e){
+  pts.delete(e.pointerId);
+  if(pinch&&pts.size<2) pinch=null;            // 한 손가락이 떨어져도 남은 손가락으로 끌지는 않는다
   cv.classList.remove('grabbing');
-  if(drag&&!moved){
+  if(drag&&!moved&&e.type==='pointerup'){
     const i=pick(e.offsetX!=null?e.offsetX:0,e.offsetY!=null?e.offsetY:0);
     if(i>=0) showKeyword(i);
   }
   drag=null;
-},SIG);
+}
+addEventListener('pointerup',pointerEnd,SIG);
+addEventListener('pointercancel',pointerEnd,SIG);
 const EMBEDDED=(()=>{ try{ return window.top!==window.self; }catch(e){ return true; } })();
 let hintT=0;
 cv.addEventListener('wheel',e=>{
@@ -867,8 +923,7 @@ cv.addEventListener('wheel',e=>{
   }
   e.preventDefault();
   const f=Math.exp(-e.deltaY*(e.deltaMode===1?0.03:0.0016));
-  const nk=Math.max(0.06,Math.min(7,k*f));
-  tx=e.offsetX-(e.offsetX-tx)*(nk/k); ty=e.offsetY-(e.offsetY-ty)*(nk/k); k=nk; mark();
+  zoomTo(k*f,e.offsetX,e.offsetY); mark();
 },Object.assign({passive:false},SIG));
 
 /* ── 카드 ── */
